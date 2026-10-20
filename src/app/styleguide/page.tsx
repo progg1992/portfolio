@@ -118,34 +118,38 @@ export default function Styleguide() {
         </Row>
         <Row label="terminal tab">
           <div role="tablist" aria-label="Idle tab example">
-            <TerminalTab selected={false} controls="none">
+            <TerminalTab selected={false} controls="sg-panel-1">
               ~/operations
             </TerminalTab>
           </div>
           <div role="tablist" aria-label="Hover tab example">
             <TerminalTab
               selected={false}
-              controls="none"
+              controls="sg-panel-2"
               className="border-line-strong bg-slate text-ink"
             >
               ~/operations
             </TerminalTab>
           </div>
           <div role="tablist" aria-label="Selected tab example">
-            <TerminalTab selected controls="none">
+            <TerminalTab selected controls="sg-panel-3">
               ~/operations
             </TerminalTab>
           </div>
           <div role="tablist" aria-label="Focused tab example">
             <TerminalTab
               selected={false}
-              controls="none"
+              controls="sg-panel-4"
               className="text-ink outline-2 outline-offset-2 outline-cyan"
             >
               ~/operations
             </TerminalTab>
           </div>
         </Row>
+        {/* Panels for the demo tabs, so every aria-controls points at a real element. */}
+        {[1, 2, 3, 4].map((n) => (
+          <div key={n} id={`sg-panel-${n}`} role="tabpanel" aria-label="Example panel" hidden />
+        ))}
       </Section>
 
       <Section title="tags and badges">
