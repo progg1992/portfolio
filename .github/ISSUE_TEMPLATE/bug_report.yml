@@ -1,0 +1,50 @@
+name: Bug report
+description: Something on the site is broken or wrong.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Work on this project is tracked in YouTrack (project PTR). GitHub issues are triaged into YouTrack.
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: https://.../work/bdos-v3
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the page on a 375 px wide screen
+        2. Tab to the contact form
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Browser, version, and device
+      placeholder: Safari 18 on iPhone 15
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Accessibility
+        - Content or figures
+        - Layout or responsive
+        - Contact form
+        - Performance
+        - Other
+    validations:
+      required: true
