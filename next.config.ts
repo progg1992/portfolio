@@ -1,3 +1,4 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 // Vercel sets VERCEL_ENV to "production", "preview", or "development".
@@ -18,6 +19,8 @@ const nextConfig: NextConfig = {
   // Every page on this site is static; nothing reads cookies or headers.
   cacheComponents: true,
   partialPrefetching: true,
+  // Case studies are MDX modules imported by the /work routes (ADR 0007).
+  pageExtensions: ["ts", "tsx", "mdx"],
   poweredByHeader: false,
   reactStrictMode: true,
   turbopack: {
@@ -30,4 +33,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);

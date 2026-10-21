@@ -18,5 +18,6 @@ Cache Components and Partial Prefetching are enabled, as Next.js recommends from
 
 - Pages are served from the CDN with no server work, which keeps performance high and the attack surface small.
 - The one dynamic piece, the contact form, is a server action (ADR 0003).
-- CI fails if any route renders dynamically, so this property cannot erode quietly.
+- The root layout sets `ensureStatic = "navigation"`, so Next.js fails the build if any route needs request-time rendering. CI also checks the build output.
+- The same setting makes an unknown dynamic param wait for its complete static result, so a bad `/work` URL returns a real 404. Without it, Partial Prerendering sent the fallback shell with a 200 on the first request (found by e2e/not-found.spec.ts).
 - Vercel's Hobby plan is for non-commercial use. Whether consulting calls-to-action fit it is tracked as risk PTR-44; the Pro plan or a different static host are the fallbacks, and nothing in the build depends on Vercel-only features.
