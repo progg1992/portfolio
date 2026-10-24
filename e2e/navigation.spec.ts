@@ -115,11 +115,14 @@ test("header controls are at least 44 by 44 px", async ({ page }) => {
 test("the resume PDF is linked from the header and downloads", async ({ page, request }) => {
   test.skip(!resume.live, `resume ships with ${resume.story}`);
   await page.goto("/");
+  // On narrow screens with a menu, the resume link lives inside it.
+  const menu = page.getByRole("button", { name: "Open menu" });
+  if (await menu.isVisible()) await menu.click();
   const link = page
     .getByRole("banner")
     .getByRole("link", { name: /resume/i })
-    .first();
-  await expect(link).toBeVisible();
+    .locator("visible=true");
+  await expect(link).toHaveCount(1);
   await expect(link).toHaveAttribute("href", resume.path);
   const res = await request.get(resume.path);
   expect(res.status()).toBe(200);
