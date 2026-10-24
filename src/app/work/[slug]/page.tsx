@@ -23,7 +23,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   const Body = await getCaseStudyBody(study.slug);
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-20">
+    <div className="mx-auto max-w-3xl px-6 py-20">
       <p className="font-mono text-sm text-cyan">
         {study.id} <span className="text-subtle">· {study.discipline}</span>
       </p>
@@ -33,6 +33,6 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       <article className="mt-8">
         <Body />
       </article>
-    </main>
+    </div>
   );
 }
