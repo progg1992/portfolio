@@ -7,6 +7,7 @@ export const routes = [
   "/styleguide",
   "/work",
   "/experience",
+  "/about",
   "/work/bdos-v3",
   "/work/incident-response",
   "/work/distributed-delivery",
