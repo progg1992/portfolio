@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SiteFooter } from "@/components/site/site-footer";
+import { Motion } from "@/components/site/motion";
 import { SiteHeader } from "@/components/site/site-header";
 import { indexable, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+        <Motion />
       </body>
     </html>
   );

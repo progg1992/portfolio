@@ -51,7 +51,7 @@ export default function AboutPage() {
           </h2>
         </div>
         <div className="grid gap-4 md:grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))]">
-          <div className="flex flex-col justify-between gap-6 rounded-[14px] border border-purple/40 bg-charcoal p-8">
+          <div className="glow flex flex-col justify-between gap-6 rounded-[14px] border border-purple/40 bg-charcoal p-8">
             <span className="font-mono text-xs text-purple-text">{governance.label}</span>
             <div className="flex flex-col gap-3">
               <h3 className="text-[28px] leading-[1.15] font-bold tracking-[-0.02em]">
@@ -60,7 +60,7 @@ export default function AboutPage() {
               <p className="text-muted">{governance.body}</p>
             </div>
           </div>
-          <div className="flex flex-col gap-2 rounded-[14px] border border-line bg-charcoal p-7">
+          <div className="glow flex flex-col gap-2 rounded-[14px] border border-line bg-charcoal p-7">
             <span className="font-mono text-xs text-cyan">education</span>
             <h3 className="text-xl font-bold">{education.degree}</h3>
             <p className="text-[15px] text-muted">{education.detail}</p>
@@ -69,7 +69,7 @@ export default function AboutPage() {
             </p>
             <p className="text-sm text-subtle">{education.earlier}</p>
           </div>
-          <div className="flex flex-col gap-3 rounded-[14px] border border-line bg-charcoal p-7">
+          <div className="glow flex flex-col gap-3 rounded-[14px] border border-line bg-charcoal p-7">
             <span className="font-mono text-xs text-cyan">certifications</span>
             <h3 className="text-xl font-bold">Professional development</h3>
             <ul className="flex flex-wrap gap-2 font-mono text-xs">

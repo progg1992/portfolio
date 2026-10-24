@@ -95,3 +95,57 @@
     }
   }
 }
+
+/*
+ * Motion (PTR-30, design spec "Motion"). Only on devices with a fine pointer
+ * that can hover, and only when the visitor allows motion; touch devices and
+ * prefers-reduced-motion get none of it. Nothing here changes layout.
+ */
+
+/* Cursor glow: a 280 px cyan radial at 8% that follows the pointer inside an
+   element marked .glow, painted behind its content. src/components/site/motion.tsx
+   sets --glow-x and --glow-y. */
+@utility glow {
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        280px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+        rgb(6 182 212 / 0.08),
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 200ms ease-out;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+/* Status dots: one pulse the first time each dot scrolls into view. */
+@utility pulse-dot {
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    &[data-seen] {
+      animation: status-pulse 900ms ease-out 1;
+    }
+  }
+}
+
+@keyframes status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}

@@ -34,7 +34,9 @@ export function StatusBadge({
         className,
       )}
     >
-      {dot && <span aria-hidden="true" className={cn("size-1.5 rounded-full", t.dot)} />}
+      {dot && (
+        <span aria-hidden="true" className={cn("size-1.5 pulse-dot rounded-full", t.dot, t.text)} />
+      )}
       {children}
     </span>
   );

@@ -11,15 +11,16 @@ export function SystemsGrid() {
         <li
           key={s.name}
           className={cn(
-            "flex flex-col gap-2.5 rounded-[10px] border bg-slate p-5",
+            "glow flex flex-col gap-2.5 rounded-[10px] border bg-slate p-5",
             s.wide && "lg:col-span-2",
             s.accent ? "border-purple/50" : "border-line",
           )}
         >
           <span className="flex justify-between text-xs text-muted">
             {s.key}
-            <span className="text-ok">
-              <span aria-hidden="true">● </span>online
+            <span className="inline-flex items-center gap-1.5 text-ok">
+              <span aria-hidden="true" className="size-1.5 pulse-dot rounded-full bg-ok" />
+              online
             </span>
           </span>
           <span
@@ -40,7 +41,7 @@ export function Stats({ items }: { items: Stat[] }) {
       {items.map((s) => (
         <div
           key={s.key}
-          className="flex flex-col gap-2 rounded-[10px] border border-line bg-slate p-6"
+          className="glow flex flex-col gap-2 rounded-[10px] border border-line bg-slate p-6"
         >
           <dt className="text-xs text-muted">{s.key}</dt>
           <dd
