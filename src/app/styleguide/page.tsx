@@ -50,7 +50,7 @@ export default function Styleguide() {
   if (process.env.VERCEL_ENV === "production") notFound();
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-16">
+    <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-16">
       <header className="flex flex-col gap-3">
         <p className="font-mono text-sm text-subtle">internal · PTR-14</p>
         <h1 className="text-heading font-bold">Tokens, components, and states</h1>
@@ -190,6 +190,6 @@ export default function Styleguide() {
           />
         </div>
       </Section>
-    </main>
+    </div>
   );
 }

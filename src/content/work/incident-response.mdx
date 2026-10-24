@@ -1,0 +1,31 @@
+export const meta = {
+  id: "CS-02",
+  slug: "incident-response",
+  title: "Production incident response and recovery",
+  subheading: "Three incidents, each resolved and written down",
+  summary: "A corrupted database, an exhausted server, and a suspected data exfiltration.",
+  discipline: "infrastructure",
+  stack: ["Linux", "Docker", "Google Workspace logs", "Acronis"],
+  context: "Certified Bice Ltd., 2023 to 2025; Twin Designs and Tech, 2023 to 2024",
+  problem:
+    "A website database corrupted during a hosting migration. Separately, a deployment exhausted server resources and took production offline. A third event looked like a bulk data exfiltration attempt.",
+  solution:
+    "For the database, I analyzed monitoring data and server logs, restored from an earlier backup, and completed the migration. For the outage, I traced the cause through monitoring, application logs, container health, and utilization, then corrected the deployment configuration. For the exfiltration, I used Workspace access logs and source IP data to identify the account, revoked its access, and assessed what it had touched.",
+  impact:
+    "Each incident ended with a durable change, not just a fix: a migration SOP and developer training on backup and recovery, enhanced monitoring with a documented recovery procedure, and stronger download alerts with a briefing to executive leadership.",
+  metrics: [
+    {
+      value: "3",
+      label: "production incidents resolved, each with a written procedure",
+      source: "Certified Bice Ltd., 2023 to 2025; Twin Designs and Tech, 2023 to 2024",
+    },
+  ],
+  exhibit: "incident-timeline",
+  order: 2,
+  featured: true,
+  published: true,
+};
+
+## Why the write-up matters
+
+The restore is the part people remember. The procedure is the part that keeps it from happening twice. Every one of these incidents ended with a document a developer or an executive could act on without me in the room.

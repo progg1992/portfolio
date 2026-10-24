@@ -1,4 +1,4 @@
-# ADR 0007: MDX case studies with schema-validated frontmatter
+# ADR 0007: MDX case studies with schema-validated metadata
 
 - **Status:** Accepted
 - **Date:** 2026-10-19
@@ -10,9 +10,12 @@ Case studies are the core of the site, and the Client must be able to add one wi
 
 ## Decision
 
-- Each case study is one MDX file in `content/work/`.
-- Its frontmatter is validated at build time with a Zod schema: id, slug, title, subheading, discipline, stack, problem, solution, impact, metrics, exhibit type, order, featured, and published.
+- Each case study is one MDX file in `src/content/work/`.
+- The file exports a `meta` object instead of YAML frontmatter. `@next/mdx` supports JS exports natively, so no frontmatter plugin is needed.
+- `meta` is validated at build time with a Zod schema (`src/content/schema.ts`): id, slug, title, subheading, summary, discipline, stack, context, problem, solution, impact, metrics, exhibit type, order, featured, and published.
 - Every metric requires a `source` field. A metric without one fails the build with a message naming the file and the field.
+- The metadata load is cached with `"use cache"`, which Cache Components requires for the directory read to be part of the static output. The MDX body is imported separately, because a component cannot be serialized into the cache.
+- File names must match slugs; ids, slugs, and order values must be unique.
 - One template renders every study at `/work/[slug]`, and the same data feeds the `/work` index and the home page teasers.
 
 ## Consequences

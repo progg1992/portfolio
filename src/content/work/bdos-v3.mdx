@@ -1,0 +1,38 @@
+export const meta = {
+  id: "CS-01",
+  slug: "bdos-v3",
+  title: "BDOS v3: enterprise documentation architecture",
+  subheading: "A model-driven systems documentation platform",
+  summary: "146 canonical models across 14 domains, validated on every change.",
+  discipline: "documentation",
+  stack: ["JSON Schema", "MkDocs", "Python", "Git"],
+  context: "Blue Devil Development, 2025 to present",
+  problem:
+    "Operational knowledge lived in scattered documents. Onboarding was slow, recovery depended on whoever remembered the system, and engineering standards conflicted from one document to the next.",
+  solution:
+    "I defined the requirements, designed the architecture, and built a platform that holds 146 canonical models across 14 domains. Each model is validated against a JSON Schema, documentation is generated rather than hand-edited, and architecture decision records live in the same pipeline.",
+  impact:
+    "Every core domain, including recovery procedures, is covered by one validated structure. Validation rejects unapproved structural changes, so the documentation cannot drift from the system it describes.",
+  metrics: [
+    {
+      value: "146",
+      label: "canonical models",
+      source: "BDOS v3, Blue Devil Development, 2025 to present",
+    },
+    {
+      value: "14",
+      label: "system domains",
+      source: "BDOS v3, Blue Devil Development, 2025 to present",
+    },
+  ],
+  exhibit: "model-tree",
+  order: 1,
+  featured: true,
+  published: true,
+};
+
+## How it is organized
+
+Source models are YAML. Each one is checked against its schema before anything is built, and the build output is never edited by hand. That rule is the whole point: a document a person can edit freely is a document that will eventually disagree with the system.
+
+Testing and MkDocs integration run in the same pipeline as the models, so a change that breaks the documentation site fails before it merges.
