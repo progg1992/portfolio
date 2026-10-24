@@ -96,7 +96,7 @@ Run these on every page: home, work, one case study, experience, about, contact,
 
 | #   | Do                       | Expect to hear                                              |
 | --- | ------------------------ | ----------------------------------------------------------- |
-| A1  | Read the story           | Your two paragraphs, then the four rules, in order          |
+| A1  | Read the story           | Your two paragraphs, then the four principles paragraph     |
 | A2  | Reach the education card | "M.S. Computer Information Systems", "in progress", no date |
 
 ### Contact
