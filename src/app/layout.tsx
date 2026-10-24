@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/site/site-footer";
 import { Motion } from "@/components/site/motion";
 import { SiteHeader } from "@/components/site/site-header";
-import { indexable, siteUrl } from "@/lib/site";
+import { analytics, indexable, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // Every route on this site must be fully static (ADR 0001). Next.js validates this
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <SiteFooter />
         <Motion />
+        {analytics.live && <Analytics />}
       </body>
     </html>
   );
