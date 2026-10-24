@@ -32,7 +32,7 @@ export default async function WorkPage() {
           Case studies
         </h1>
         <p className="max-w-[640px] text-xl text-muted">
-          What broke or was missing, what I built, and what changed. Every figure names its source.
+          Each one written as problem, solution, and impact, with the source behind every number.
         </p>
       </header>
       <WorkIndex studies={studies} />

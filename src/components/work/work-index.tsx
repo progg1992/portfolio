@@ -74,7 +74,7 @@ export function WorkIndex({ studies }: { studies: WorkCard[] }) {
         <p role="status" className="font-mono text-xs text-subtle">
           {active
             ? `${shown.length} of ${studies.length} case studies in ${labels[active]}`
-            : `${studies.length} case studies`}
+            : `${studies.length} ${studies.length === 1 ? "case study" : "case studies"}`}
         </p>
       </div>
 
