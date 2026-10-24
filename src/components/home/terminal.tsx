@@ -3,14 +3,8 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { TerminalTab } from "@/components/ui/terminal-tab";
 import { cn } from "@/lib/cn";
-import {
-  leadership,
-  operations,
-  systems,
-  tabs,
-  type Stat,
-  type TabId,
-} from "@/content/system-status";
+import { leadership, operations, tabs, type TabId } from "@/content/system-status";
+import { Stats, SystemsGrid } from "./status-cards";
 
 const panelId = (id: TabId) => `terminal-panel-${id}`;
 const tabId = (id: TabId) => `terminal-tab-${id}`;
@@ -91,34 +85,7 @@ export function Terminal() {
             className={cn("rounded-lg", switched && t.id === active && "animate-panel-in")}
           >
             {t.id === "infrastructure" ? (
-              <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-                {systems.map((s) => (
-                  <li
-                    key={s.name}
-                    className={cn(
-                      "flex flex-col gap-2.5 rounded-[10px] border bg-slate p-5",
-                      s.wide && "lg:col-span-2",
-                      s.accent ? "border-purple/50" : "border-line",
-                    )}
-                  >
-                    <span className="flex justify-between text-xs text-muted">
-                      {s.key}
-                      <span className="text-ok">
-                        <span aria-hidden="true">● </span>online
-                      </span>
-                    </span>
-                    <span
-                      className={cn(
-                        "font-sans font-semibold text-ink",
-                        s.wide ? "text-[22px]" : "text-xl",
-                      )}
-                    >
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-subtle">{s.detail}</span>
-                  </li>
-                ))}
-              </ul>
+              <SystemsGrid />
             ) : (
               <Stats items={t.id === "operations" ? operations : leadership} />
             )}
@@ -126,30 +93,5 @@ export function Terminal() {
         ))}
       </div>
     </div>
-  );
-}
-
-function Stats({ items }: { items: Stat[] }) {
-  return (
-    <dl className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-      {items.map((s) => (
-        <div
-          key={s.key}
-          className="flex flex-col gap-2 rounded-[10px] border border-line bg-slate p-6"
-        >
-          <dt className="text-xs text-muted">{s.key}</dt>
-          <dd
-            className={cn(
-              "text-[40px] leading-none font-semibold",
-              s.accent ? "text-purple-text" : "text-cyan",
-            )}
-          >
-            {s.value}
-          </dd>
-          <dd className="font-sans text-[15px] text-muted">{s.body}</dd>
-          <dd className="mt-auto pt-1 text-[11px] text-subtle">src: {s.source}</dd>
-        </div>
-      ))}
-    </dl>
   );
 }
