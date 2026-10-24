@@ -8,7 +8,7 @@
  * (which failed the Lighthouse Best Practices budget, PTR-15).
  */
 export const pages = {
-  work: { href: "/work", label: "work", live: false, story: "PTR-26" },
+  work: { href: "/work", label: "work", live: true, story: "PTR-26" },
   experience: { href: "/experience", label: "experience", live: false, story: "PTR-49" },
   about: { href: "/about", label: "about", live: false, story: "PTR-23" },
   contact: { href: "/contact", label: "contact", live: false, story: "PTR-24" },

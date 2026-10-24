@@ -6,7 +6,9 @@ import { z } from "zod";
  * anything that does not match, including a metric without a source (CNT-01).
  */
 
-export const disciplines = ["infrastructure", "operations", "delivery", "documentation"] as const;
+import { disciplines } from "./disciplines";
+
+export { disciplines };
 
 const text = (field: string, max: number) =>
   z
