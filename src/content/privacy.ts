@@ -28,9 +28,9 @@ export const sections = {
     paragraphs: ["This site sets no cookies."],
   },
   deletion: {
-    heading: "Deleting your message",
+    heading: "Questions about your message",
     paragraphs: [
-      "Ask through the contact form or on LinkedIn, and I will delete your message from my inbox and ask Resend to remove it before the 30 days are up. I will confirm when it is done.",
+      "To ask about a message you sent, or to have it removed, write through the contact form or on LinkedIn.",
     ],
   },
 } as const;
