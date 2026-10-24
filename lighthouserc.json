@@ -6,6 +6,7 @@
       "url": [
         "http://localhost:3200/",
         "http://localhost:3200/work",
+        "http://localhost:3200/experience",
         "http://localhost:3200/work/bdos-v3"
       ],
       "numberOfRuns": 3,

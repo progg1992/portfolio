@@ -3,14 +3,14 @@ import type { ReactNode } from "react";
 import { Terminal } from "@/components/home/terminal";
 import { Topology } from "@/components/home/topology";
 import { buttonClasses } from "@/components/ui/button";
+import { teaser as experienceTeaser } from "@/content/experience";
 import { hero } from "@/content/home";
 import { getFeaturedCaseStudies } from "@/content/work";
 import { pages, resume } from "@/lib/site";
 
 // Home page as a summary hub (PTR-20, CR-1). Each teaser comes from the content
 // its page renders, and appears once that page is live (src/lib/site.ts).
-// The experience and about teasers are typed here for now; PTR-49 and PTR-23
-// move them into the content those pages render.
+// The about teaser is typed here until PTR-23 moves it into the about content.
 
 function Figure({ children }: { children: ReactNode }) {
   return <strong className="font-semibold text-ink">{children}</strong>;
@@ -34,12 +34,7 @@ type Teaser = {
 export default async function Home() {
   const featured = await getFeaturedCaseStudies();
   const teasers: Teaser[] = [
-    {
-      page: pages.experience,
-      title: "Operations first, development second",
-      body: "Role history, the infrastructure record, and the skills behind it.",
-      cta: "view experience",
-    },
+    { page: pages.experience, ...experienceTeaser },
     {
       page: pages.about,
       title: "From the Upper Peninsula, building for the long run",
