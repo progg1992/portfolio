@@ -12,7 +12,7 @@ export const pages = {
   experience: { href: "/experience", label: "experience", live: true, story: "PTR-49" },
   about: { href: "/about", label: "about", live: true, story: "PTR-23" },
   contact: { href: "/contact", label: "contact", live: true, story: "PTR-24" },
-  privacy: { href: "/privacy", label: "privacy", live: false, story: "PTR-50" },
+  privacy: { href: "/privacy", label: "privacy", live: true, story: "PTR-50" },
 } as const;
 
 type Page = (typeof pages)[keyof typeof pages];
@@ -27,6 +27,16 @@ export const nav: readonly Page[] = [
 
 /** The resume PDF in /public. Shown once the Client accepts the final file (PTR-8). */
 export const resume = { path: "/Pierce-Rogg-Resume.pdf", live: true, story: "PTR-8" } as const;
+
+/**
+ * Cookieless analytics (PTR-35). The privacy page reads this flag, so its
+ * analytics paragraph always matches what the site actually runs (PTR-50).
+ */
+export const analytics = {
+  live: false,
+  provider: "Vercel Web Analytics",
+  story: "PTR-35",
+} as const;
 
 export const external = {
   linkedin: "https://linkedin.com/in/pierce-rogg",
