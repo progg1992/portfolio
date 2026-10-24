@@ -1,0 +1,30 @@
+{/*
+  Copy this file to <slug>.mdx to add a case study. Files starting with "_" are
+ignored by the site. The build fails, naming this file and the field, if
+anything below is missing or wrong. See docs/content.md.
+*/}
+
+export const meta = {
+  id: "CS-00",
+  slug: "your-slug",
+  title: "Title, 90 characters or fewer",
+  subheading: "One line under the title",
+  summary: "One line for cards and the home page, 160 characters or fewer.",
+  discipline: "infrastructure", // infrastructure | operations | delivery | documentation
+  stack: ["Tool", "Tool"],
+  context: "Employer or project, start year to end year",
+  problem: "What was broken, for whom, and why it mattered.",
+  solution: "What you did, in first person.",
+  impact: "What changed because of it.",
+  metrics: [
+    // Every metric needs a source. A metric without one fails the build.
+    { value: "25%", label: "what the number measures", source: "Employer, years" },
+  ],
+  order: 99,
+  featured: false,
+  published: false,
+};
+
+## Optional longer section
+
+Anything below the meta block renders as the case study body.

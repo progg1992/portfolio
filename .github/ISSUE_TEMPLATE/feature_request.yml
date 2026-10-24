@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a change. Scope changes go through the change request process.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Anything that adds to or alters the agreed scope becomes a change request in YouTrack (PTR-45) before work starts.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve, and for whom?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How would we know it is done?
+      description: Write it as checkable acceptance criteria.
+      placeholder: "- [ ] ..."
+    validations:
+      required: true

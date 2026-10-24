@@ -1,0 +1,12 @@
+.next
+out
+build
+coverage
+node_modules
+package-lock.json
+next-env.d.ts
+AGENTS.md
+test-results
+playwright-report
+.lighthouseci
+*.mdx
