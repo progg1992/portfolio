@@ -25,7 +25,6 @@ export const meta = {
       source: "BDOS v3, Blue Devil Development, 2025 to present",
     },
   ],
-  exhibit: "model-tree",
   order: 1,
   featured: true,
   published: true,
@@ -34,5 +33,18 @@ export const meta = {
 ## How it is organized
 
 Source models are YAML. Each one is checked against its schema before anything is built, and the build output is never edited by hand. That rule is the whole point: a document a person can edit freely is a document that will eventually disagree with the system.
+
+<Exhibit caption="model tree">
+
+```text
+bdos.v3/
+├── domains/            14
+├── models/             146 canonical
+│   └── *.yaml  ──►  schema.json   ✓ valid
+├── adrs/               decision records
+└── build/              generated, never hand-edited
+```
+
+</Exhibit>
 
 Testing and MkDocs integration run in the same pipeline as the models, so a change that breaks the documentation site fails before it merges.

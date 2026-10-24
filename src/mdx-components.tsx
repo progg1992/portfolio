@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { Exhibit, IncidentTimeline } from "@/components/work/exhibits";
 
 // Required by @next/mdx in the App Router. Maps Markdown elements in case study
 // bodies to the site's type styles.
@@ -23,6 +24,9 @@ const components: MDXComponents = {
     </a>
   ),
   code: (props) => <code className="font-mono text-sm text-ink" {...props} />,
+  // Case study exhibits, used directly in MDX bodies.
+  Exhibit,
+  IncidentTimeline,
 };
 
 export function useMDXComponents(): MDXComponents {

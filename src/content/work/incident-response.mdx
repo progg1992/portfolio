@@ -20,11 +20,24 @@ export const meta = {
       source: "Certified Bice Ltd., 2023 to 2025; Twin Designs and Tech, 2023 to 2024",
     },
   ],
-  exhibit: "incident-timeline",
   order: 2,
   featured: true,
   published: true,
 };
+
+## One incident, step by step
+
+The deployment that exhausted server resources, at Twin Designs and Tech:
+
+<IncidentTimeline
+  caption="resource exhaustion outage"
+  steps={[
+    { label: "ALERT", tone: "alert", text: "Production unavailable after a deployment exhausted server resources" },
+    { label: "TRIAGE", tone: "warn", text: "Monitoring data, application logs, container health, system utilization" },
+    { label: "FIX", tone: "info", text: "Corrected the deployment configuration and restored availability" },
+    { label: "HARDEN", tone: "accent", text: "Enhanced monitoring and a documented recovery procedure" },
+  ]}
+/>
 
 ## Why the write-up matters
 

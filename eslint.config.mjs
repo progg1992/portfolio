@@ -13,6 +13,10 @@ const eslintConfig = defineConfig([
     files: ["**/*.{js,jsx,ts,tsx}"],
     rules: {
       ...jsxA11y.flatConfigs.recommended.rules,
+      // A labeled role="region" with tabIndex={0} is the WCAG pattern for content
+      // that scrolls horizontally, so keyboard users can scroll it (axe rule
+      // scrollable-region-focusable). Allow it alongside the default tabpanel.
+      "jsx-a11y/no-noninteractive-tabindex": ["error", { tags: [], roles: ["tabpanel", "region"] }],
     },
   },
   prettier,

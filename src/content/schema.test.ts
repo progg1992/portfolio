@@ -14,7 +14,6 @@ const valid: CaseStudyMeta = {
   solution: "A solution.",
   impact: "An impact.",
   metrics: [{ value: "25%", label: "fewer delays", source: "Example Co., 2024 to 2025" }],
-  exhibit: "none",
   order: 9,
   featured: false,
   published: true,
