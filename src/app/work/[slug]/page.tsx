@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Tag } from "@/components/ui/tag";
 import { getCaseStudies, getCaseStudy, getCaseStudyBody } from "@/content/work";
+import { pages } from "@/lib/site";
 
 // Case study template (PTR-22). One template renders every study in
 // src/content/work; no study has hand-built page code (ADR 0007).
@@ -41,6 +42,10 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   const previous = index > 0 ? all[index - 1] : undefined;
   const next = index < all.length - 1 ? all[index + 1] : undefined;
   const sources = [...new Set(study.metrics.map((m) => m.source))];
+  // Until the /work index ships (PTR-26), the ends of the list point home.
+  const listEnd = pages.work.live
+    ? { href: pages.work.href, label: "all case studies", title: "~/work" }
+    : { href: "/", label: "back to", title: "~/ home" };
 
   return (
     <article>
@@ -53,9 +58,13 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           <nav aria-label="Breadcrumb" className="font-mono text-[13px] text-subtle">
             <ol className="flex gap-2">
               <li>
-                <Link href="/work" className="text-muted hover:text-ink">
-                  ~/work
-                </Link>
+                {pages.work.live ? (
+                  <Link href={pages.work.href} className="text-muted hover:text-ink">
+                    ~/work
+                  </Link>
+                ) : (
+                  "~/work"
+                )}
               </li>
               <li aria-hidden="true">/</li>
               <li aria-current="page">{study.slug}</li>
@@ -135,24 +144,26 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         <ul className="mx-auto grid max-w-[1040px] gap-4 px-6 pt-10 pb-22 sm:grid-cols-2">
           <li>
             <Link
-              href={previous ? `/work/${previous.slug}` : "/work"}
+              href={previous ? `/work/${previous.slug}` : listEnd.href}
               className="flex h-full flex-col gap-1.5 rounded-xl border border-line p-6 hover:border-line-strong hover:bg-charcoal"
             >
               <span className="font-mono text-xs text-subtle">
-                {previous ? `previous: ${previous.id}` : "all case studies"}
+                {previous ? `previous: ${previous.id}` : listEnd.label}
               </span>
-              <span className="text-lg font-semibold">{previous ? previous.title : "~/work"}</span>
+              <span className="text-lg font-semibold">
+                {previous ? previous.title : listEnd.title}
+              </span>
             </Link>
           </li>
           <li>
             <Link
-              href={next ? `/work/${next.slug}` : "/work"}
+              href={next ? `/work/${next.slug}` : listEnd.href}
               className="flex h-full flex-col gap-1.5 rounded-xl border border-line p-6 text-right hover:border-line-strong hover:bg-charcoal"
             >
               <span className="font-mono text-xs text-subtle">
-                {next ? `next: ${next.id}` : "all case studies"}
+                {next ? `next: ${next.id}` : listEnd.label}
               </span>
-              <span className="text-lg font-semibold">{next ? next.title : "~/work"}</span>
+              <span className="text-lg font-semibold">{next ? next.title : listEnd.title}</span>
             </Link>
           </li>
         </ul>

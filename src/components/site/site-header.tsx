@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { resumePath } from "@/lib/site";
+import { nav, resume } from "@/lib/site";
 import { MobileMenu } from "./mobile-menu";
 import { NavLinks } from "./nav-links";
 
@@ -19,19 +19,23 @@ export function SiteHeader() {
           <span className="sr-only">, home</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden min-[820px]:block">
-          <NavLinks />
-        </nav>
+        {nav.length > 0 && (
+          <nav aria-label="Primary" className="hidden min-[820px]:block">
+            <NavLinks />
+          </nav>
+        )}
 
         <div className="flex items-center gap-2">
-          <a
-            href={resumePath}
-            download
-            className="hidden min-h-11 items-center rounded-control border border-line-strong px-[18px] text-sm font-medium text-ink transition-colors hover:border-subtle hover:bg-slate min-[420px]:inline-flex"
-          >
-            Resume PDF
-          </a>
-          <MobileMenu />
+          {resume.live && (
+            <a
+              href={resume.path}
+              download
+              className="hidden min-h-11 items-center rounded-control border border-line-strong px-[18px] text-sm font-medium text-ink transition-colors hover:border-subtle hover:bg-slate min-[420px]:inline-flex"
+            >
+              Resume PDF
+            </a>
+          )}
+          {(nav.length > 0 || resume.live) && <MobileMenu />}
         </div>
       </div>
     </header>

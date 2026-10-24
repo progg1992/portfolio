@@ -16,6 +16,13 @@ Every requirement in the requirements specification is verified by at least one 
 
 Run `npm run build` before `test:a11y` and `test:lighthouse`; both test the production build.
 
+The Playwright suite also covers navigation (skip link, landmarks, `aria-current`, mobile menu focus, 44 px targets), links (every internal link on every route returns 200), the preview `noindex` header, case studies, and 404s.
+
+Two rules came out of PTR-15:
+
+- **Lighthouse scores the production artifact.** The CI job builds with `VERCEL_ENV=production`. Preview builds send `X-Robots-Tag: noindex` on purpose, which fails the SEO audit `is-crawlable`. To reproduce locally: `VERCEL_ENV=production npm run build && npm run test:lighthouse`.
+- **No link to a page that does not exist.** Header, footer, and case-study links read the `live` flag on each page in `src/lib/site.ts`. The story that builds a page flips its flag in the same pull request. Navigation tests that need a page skip, with the story key as the reason, until then. A dead link also logs a prefetch 404 to the console, which fails Best Practices.
+
 ## Manual, before a story is accepted
 
 On the Vercel preview, not on localhost:

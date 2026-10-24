@@ -66,6 +66,12 @@ jobs:
     needs: checks
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Score the artifact production will serve. Without this, next.config.ts adds
+    # the preview X-Robots-Tag: noindex header (PTR-13) and the SEO audit
+    # is-crawlable fails by design. The noindex header itself is covered by
+    # e2e/noindex.spec.ts in the accessibility job.
+    env:
+      VERCEL_ENV: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
