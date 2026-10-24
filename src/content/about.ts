@@ -1,6 +1,6 @@
 /**
- * About page content (PTR-23). The story is in Pierce's first-person voice and
- * needs the Client's approval before launch. Credentials must match the resume
+ * About page content (PTR-23). The story is the Client's own text, supplied
+ * Oct 24, 2026. Credentials must match the resume
  * (PTR-8) on launch day: no Network+ or Security+, and the M.S. shows no date
  * (Client decisions, Oct 19, 2026).
  */
@@ -8,8 +8,8 @@
 export const heading = "From the Upper Peninsula, building for the long run";
 
 export const story = [
-  "I came up writing code and moved into running the systems it depends on: servers, networks, identity, security, vendors, and budgets. Seeing both sides changed how I work. I build systems I would be willing to run at two in the morning.",
-  "I live on the Michigan and Wisconsin border, in the Menominee and Marinette area. In 2025 I founded Blue Devil Development to build web applications, ecommerce platforms, and cloud tools for small and mid-sized businesses across the Upper Peninsula and Northern Wisconsin.",
+  "I’m a software developer and technology leader with experience building web applications, integrating systems, and guiding projects from concept to launch. My background includes serving as a Chief Technology Officer and leading delivery across multiple client projects. I enjoy translating complex requirements into practical solutions, combining hands-on development with an understanding of business priorities.",
+  "I’m seeking technical roles where I can contribute to software development, architecture, and team collaboration. I bring a thoughtful approach to problem-solving, clear communication, and a focus on building maintainable systems. Whether I’m implementing a feature, improving an existing application, or helping shape technical direction, my goal is to deliver reliable software that serves the people using it.",
 ];
 
 export const principles = {
