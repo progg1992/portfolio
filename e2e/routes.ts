@@ -8,6 +8,7 @@ export const routes = [
   "/work",
   "/experience",
   "/about",
+  "/contact",
   "/work/bdos-v3",
   "/work/incident-response",
   "/work/distributed-delivery",

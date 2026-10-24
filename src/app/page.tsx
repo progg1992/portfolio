@@ -69,7 +69,7 @@ export default async function Home() {
             </p>
             <div className="flex flex-wrap gap-3">
               {pages.contact.live && (
-                <Link href={pages.contact.href} className={buttonClasses({})}>
+                <Link href={`${pages.contact.href}?reason=interview`} className={buttonClasses({})}>
                   Schedule a conversation
                 </Link>
               )}

@@ -27,6 +27,8 @@ export default defineConfig({
     command: `npm run start -- -p ${PORT}`,
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
+    // The contact form skips the network in tests (src/lib/contact/deliver.ts).
+    env: { CONTACT_TRANSPORT: "test" },
     timeout: 60_000,
   },
 });

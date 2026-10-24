@@ -184,7 +184,10 @@ export default function ExperiencePage() {
         <div className="flex flex-wrap gap-3">
           <ResumeButton />
           {pages.contact.live && (
-            <Link href={pages.contact.href} className={buttonClasses({ variant: "secondary" })}>
+            <Link
+              href={`${pages.contact.href}?reason=interview`}
+              className={buttonClasses({ variant: "secondary" })}
+            >
               Schedule a conversation
             </Link>
           )}

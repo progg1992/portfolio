@@ -11,7 +11,7 @@ export const pages = {
   work: { href: "/work", label: "work", live: true, story: "PTR-26" },
   experience: { href: "/experience", label: "experience", live: true, story: "PTR-49" },
   about: { href: "/about", label: "about", live: true, story: "PTR-23" },
-  contact: { href: "/contact", label: "contact", live: false, story: "PTR-24" },
+  contact: { href: "/contact", label: "contact", live: true, story: "PTR-24" },
   privacy: { href: "/privacy", label: "privacy", live: false, story: "PTR-50" },
 } as const;
 

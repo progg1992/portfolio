@@ -99,7 +99,7 @@ export default function AboutPage() {
           </p>
         </div>
         {pages.contact.live && (
-          <Link href={pages.contact.href} className={buttonClasses({})}>
+          <Link href={`${pages.contact.href}?reason=consulting`} className={buttonClasses({})}>
             Start a conversation
           </Link>
         )}
