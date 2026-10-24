@@ -127,7 +127,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           {parts.map(({ key, label, color }) => (
             <div
               key={key}
-              className="flex flex-col gap-3 rounded-xl border border-line bg-slate p-7"
+              className="glow flex flex-col gap-3 rounded-xl border border-line bg-slate p-7"
             >
               <h2 className={`font-mono text-[13px] font-medium ${color}`}>{label}</h2>
               <p className="text-base text-muted">{study[key]}</p>

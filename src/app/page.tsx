@@ -73,7 +73,7 @@ export default async function Home() {
         <div className="relative mx-auto grid max-w-[1240px] items-center gap-14 px-6 pt-24 pb-26 min-[1024px]:grid-cols-2">
           <div className="flex flex-col gap-7">
             <p className="inline-flex items-center gap-2.5 self-start rounded-full border border-line bg-charcoal px-3 py-1.5 font-mono text-xs text-muted">
-              <span aria-hidden="true" className="size-1.5 rounded-full bg-ok" />
+              <span aria-hidden="true" className="size-1.5 pulse-dot rounded-full bg-ok text-ok" />
               {hero.availability}
             </p>
             <h1 className="text-display font-bold">{hero.name}</h1>
@@ -137,7 +137,7 @@ export default async function Home() {
               <li key={s.slug}>
                 <Link
                   href={`/work/${s.slug}`}
-                  className="flex h-full flex-col gap-4 rounded-[14px] border border-line bg-slate p-7 transition-colors hover:border-line-strong hover:bg-charcoal"
+                  className="glow flex h-full flex-col gap-4 rounded-[14px] border border-line bg-slate p-7 transition-colors hover:border-line-strong hover:bg-charcoal"
                 >
                   <span className="flex justify-between font-mono text-xs text-muted">
                     <span className="text-cyan">{s.id}</span>
@@ -164,7 +164,7 @@ export default async function Home() {
               <li key={t.page.href}>
                 <Link
                   href={t.page.href}
-                  className="flex h-full flex-col gap-3.5 rounded-[14px] border border-line bg-charcoal p-8 transition-colors hover:border-line-strong"
+                  className="glow flex h-full flex-col gap-3.5 rounded-[14px] border border-line bg-charcoal p-8 transition-colors hover:border-line-strong"
                 >
                   <Eyebrow n={next()} label={t.page.label} />
                   <span className="text-[26px] leading-[1.2] font-bold tracking-[-0.02em]">

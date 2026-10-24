@@ -160,7 +160,7 @@ export default function ExperiencePage() {
           {skills.map((g) => (
             <div
               key={g.group}
-              className="flex flex-col gap-3 rounded-xl border border-line bg-charcoal p-6"
+              className="glow flex flex-col gap-3 rounded-xl border border-line bg-charcoal p-6"
             >
               <h3 className="font-mono text-xs text-muted">{g.group}</h3>
               <ul className="flex flex-wrap gap-2">

@@ -42,7 +42,7 @@ export function Terminal() {
   }
 
   return (
-    <div className="overflow-hidden rounded-[14px] border border-line bg-obsidian shadow-[0_30px_80px_rgb(0_0_0/0.5)]">
+    <div className="glow overflow-hidden rounded-[14px] border border-line bg-obsidian shadow-[0_30px_80px_rgb(0_0_0/0.5)]">
       <div className="flex flex-wrap items-center gap-4 border-b border-line bg-slate px-4 py-3">
         <div aria-hidden="true" className="flex gap-2">
           <span className="size-3 rounded-full bg-error" />

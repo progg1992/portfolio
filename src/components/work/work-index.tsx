@@ -83,7 +83,7 @@ export function WorkIndex({ studies }: { studies: WorkCard[] }) {
           const metric = s.metrics[0];
           return (
             <li key={s.slug}>
-              <article className="relative flex h-full flex-col gap-4 rounded-xl border border-line bg-slate p-7 transition-colors focus-within:border-cyan hover:border-line-strong hover:bg-charcoal">
+              <article className="glow relative flex h-full flex-col gap-4 rounded-xl border border-line bg-slate p-7 transition-colors focus-within:border-cyan hover:border-line-strong hover:bg-charcoal">
                 <p className="flex gap-3 font-mono text-[13px]">
                   <span className="text-cyan">{s.id}</span>
                   <span className="text-muted">{labels[s.discipline].toLowerCase()}</span>
