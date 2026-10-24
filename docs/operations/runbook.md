@@ -16,7 +16,8 @@
 - [ ] Resume downloads and opens
 - [ ] Contact form delivers a test message to the inbox
 - [ ] `/styleguide` returns 404
-- [ ] `/robots.txt` and `/sitemap.xml` reflect production
+- [ ] `/robots.txt` and `/sitemap.xml` reflect production and use the custom domain (`NEXT_PUBLIC_SITE_URL`)
+- [ ] Link preview correct in LinkedIn Post Inspector (linkedin.com/post-inspector); after changing the image, inspect again to refresh LinkedIn's cache
 
 ## Rollback
 

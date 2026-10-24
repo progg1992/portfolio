@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Terminal } from "@/components/home/terminal";
 import { Topology } from "@/components/home/topology";
@@ -7,10 +8,23 @@ import { teaser as aboutTeaser } from "@/content/about";
 import { teaser as experienceTeaser } from "@/content/experience";
 import { hero } from "@/content/home";
 import { getFeaturedCaseStudies } from "@/content/work";
-import { pages, resume } from "@/lib/site";
+import { external, pages, resume, siteUrl } from "@/lib/site";
 
 // Home page as a summary hub (PTR-20, CR-1). Each teaser comes from the content
 // its page renders, and appears once that page is live (src/lib/site.ts).
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+/** schema.org Person (PTR-34), from the same hero content the page shows. */
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: hero.name,
+  jobTitle: [...hero.titles],
+  url: `${siteUrl}/`,
+  sameAs: [external.linkedin, external.github],
+  worksFor: { "@type": "Organization", name: "Blue Devil Development", url: external.bdd },
+};
 
 function Figure({ children }: { children: ReactNode }) {
   return <strong className="font-semibold text-ink">{children}</strong>;
@@ -46,6 +60,11 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // Static data from this file; < is escaped so the JSON cannot close the tag.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, "\\u003c") }}
+      />
       <section className="relative overflow-hidden">
         <div
           aria-hidden="true"

@@ -1,6 +1,21 @@
 /** Site-wide links and labels. One place to change them. */
 
 /**
+ * The public origin for canonical URLs, Open Graph, the sitemap, and robots
+ * (PTR-34). Set NEXT_PUBLIC_SITE_URL to the custom domain in production
+ * (PTR-36). Before that, Vercel's production URL is used, then localhost.
+ */
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000")
+).replace(/\/$/, "");
+
+/** Only production is indexed; previews and staging stay noindex (PTR-13). */
+export const indexable = process.env.VERCEL_ENV === "production";
+
+/**
  * Every internal page the header and footer can link to. `live` is false until
  * the story that builds the page ships; the story that builds a page flips its
  * flag in the same pull request. Linking to a page that does not exist is a

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Tag } from "@/components/ui/tag";
@@ -16,13 +16,27 @@ export async function generateStaticParams() {
 // request and the page calls notFound(); the root layout's ensureStatic makes
 // that a real 404 (ADR 0001).
 
-export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: PageProps<"/work/[slug]">,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const study = await getCaseStudy((await params).slug);
   if (!study) return {};
+  // Extend the site's Open Graph (name, locale, preview image) rather than
+  // replace it; a bare openGraph object here drops the preview image (PTR-34).
+  const inherited = (await parent).openGraph;
   return {
     title: study.title,
     description: study.summary,
-    openGraph: { title: study.title, description: study.summary, type: "article" },
+    alternates: { canonical: `/work/${study.slug}` },
+    openGraph: {
+      siteName: inherited?.siteName ?? undefined,
+      locale: inherited?.locale,
+      images: inherited?.images,
+      title: study.title,
+      description: study.summary,
+      type: "article",
+    },
   };
 }
 

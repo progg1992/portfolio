@@ -7,6 +7,7 @@ import { getCaseStudies } from "@/content/work";
 
 export const metadata: Metadata = {
   title: "Work",
+  alternates: { canonical: "/work" },
   description:
     "Case studies in infrastructure, operations, delivery, and documentation, each with sourced figures.",
 };

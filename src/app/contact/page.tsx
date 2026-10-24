@@ -7,6 +7,7 @@ import { external, resume } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
+  alternates: { canonical: "/contact" },
   description:
     "Interviews, consulting, or a technical question. Every message reaches me directly.",
 };

@@ -13,6 +13,7 @@ import { pages, resume } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Experience",
+  alternates: { canonical: "/experience" },
   description: intro.body,
 };
 

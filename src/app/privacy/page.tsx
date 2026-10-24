@@ -6,6 +6,7 @@ import { analytics } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
+  alternates: { canonical: "/privacy" },
   description:
     "What the contact form collects, where it goes, how long it is kept, and how to have it deleted.",
 };
