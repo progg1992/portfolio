@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cn } from "@/lib/cn";
 import { nav, resume } from "@/lib/site";
 import { MobileMenu } from "./mobile-menu";
 import { NavLinks } from "./nav-links";
@@ -30,12 +31,16 @@ export function SiteHeader() {
             <a
               href={resume.path}
               download
-              className="hidden min-h-11 items-center rounded-control border border-line-strong px-[18px] text-sm font-medium text-ink transition-colors hover:border-subtle hover:bg-slate min-[420px]:inline-flex"
+              className={cn(
+                "min-h-11 items-center rounded-control border border-line-strong px-[18px] text-sm font-medium text-ink transition-colors hover:border-subtle hover:bg-slate",
+                // With a menu, the narrowest screens get the resume link inside it instead.
+                nav.length > 0 ? "hidden min-[420px]:inline-flex" : "inline-flex",
+              )}
             >
               Resume PDF
             </a>
           )}
-          {(nav.length > 0 || resume.live) && <MobileMenu />}
+          {nav.length > 0 && <MobileMenu />}
         </div>
       </div>
     </header>

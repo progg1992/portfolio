@@ -26,7 +26,7 @@ export const nav: readonly Page[] = [
 ].filter((p) => p.live);
 
 /** The resume PDF in /public. Shown once the Client accepts the final file (PTR-8). */
-export const resume = { path: "/Pierce-Rogg-Resume.pdf", live: false, story: "PTR-8" } as const;
+export const resume = { path: "/Pierce-Rogg-Resume.pdf", live: true, story: "PTR-8" } as const;
 
 export const external = {
   linkedin: "https://linkedin.com/in/pierce-rogg",
