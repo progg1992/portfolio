@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "About",
   alternates: { canonical: "/about" },
   description:
-    "Pierce Rogg: from writing code to running the systems it depends on. Education, certifications, and governance work.",
+    "Pierce Rogg, software developer and technology leader: background, education, certifications, and governance work.",
 };
 
 export default function AboutPage() {

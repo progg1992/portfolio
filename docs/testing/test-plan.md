@@ -34,16 +34,16 @@ On the Vercel preview, not on localhost:
 
 ## Manual, before launch (PTR-31, PTR-32, PTR-33)
 
-| Check            | How                                                             | Pass                                                                               |
-| ---------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Screen reader    | NVDA with Firefox on Windows; VoiceOver with Safari on iOS      | Headings, landmarks, tabs, filter, and form errors announced correctly             |
-| Zoom and reflow  | 200% zoom at 1280 px; 320 px viewport                           | No lost content, no horizontal scroll                                              |
-| Reduced motion   | OS setting on                                                   | No animation                                                                       |
-| Cross-browser    | Chrome, Firefox, Safari (macOS and iOS), Edge, current versions | Layout and interaction correct                                                     |
-| Security headers | securityheaders.com on the staging URL                          | Grade A or better                                                                  |
-| Dependencies     | `npm audit --omit=dev`                                          | No high or critical findings                                                       |
-| Contact form     | Production, end to end                                          | Message arrives; oversized input, header injection, and rapid repeats are rejected |
-| Link previews    | LinkedIn Post Inspector                                         | Title, description, and image correct                                              |
+| Check            | How                                                                                                                     | Pass                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Screen reader    | NVDA with Firefox on Windows; VoiceOver with Safari on iOS; steps in [screen-reader-script.md](screen-reader-script.md) | Headings, landmarks, tabs, filter, and form errors announced correctly             |
+| Zoom and reflow  | 200% zoom at 1280 px; 320 px viewport                                                                                   | No lost content, no horizontal scroll                                              |
+| Reduced motion   | OS setting on                                                                                                           | No animation                                                                       |
+| Cross-browser    | Chrome, Firefox, Safari (macOS and iOS), Edge, current versions                                                         | Layout and interaction correct                                                     |
+| Security headers | securityheaders.com on the staging URL                                                                                  | Grade A or better                                                                  |
+| Dependencies     | `npm audit --omit=dev`                                                                                                  | No high or critical findings                                                       |
+| Contact form     | Production, end to end                                                                                                  | Message arrives; oversized input, header injection, and rapid repeats are rejected |
+| Link previews    | LinkedIn Post Inspector                                                                                                 | Title, description, and image correct                                              |
 
 ## Defects
 

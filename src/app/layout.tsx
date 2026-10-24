@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SiteFooter } from "@/components/site/site-footer";
+import { Analytics } from "@vercel/analytics/next";
 import { Motion } from "@/components/site/motion";
 import { SiteHeader } from "@/components/site/site-header";
-import { indexable, siteUrl } from "@/lib/site";
+import { analytics, indexable, onVercel, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // Every route on this site must be fully static (ADR 0001). Next.js validates this
@@ -56,6 +57,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <SiteFooter />
         <Motion />
+        {/* Cookieless page views (PTR-35); the privacy page reads the same flag. */}
+        {analytics.live && onVercel && <Analytics />}
       </body>
     </html>
   );

@@ -24,7 +24,7 @@ test("credentials match the resume and the Client's decisions", async ({ page })
 
 test("the story is first person and the governance card is present", async ({ page }) => {
   await page.goto("/about");
-  await expect(page.getByText(/^I came up writing code/)).toBeVisible();
+  await expect(page.getByText(/^I’m a software developer and technology leader/)).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "AI ethics, governance, and SOP development" }),
   ).toBeVisible();

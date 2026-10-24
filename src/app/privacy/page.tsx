@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Privacy",
   alternates: { canonical: "/privacy" },
   description:
-    "What the contact form collects, where it goes, how long it is kept, and how to have it deleted.",
+    "What the contact form collects, where it goes, how long it is kept, and how analytics work on this site.",
 };
 
 export default function PrivacyPage() {
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
     analytics.live ? analyticsOn : analyticsOff,
     sections.cookies,
     sections.hosting,
-    sections.deletion,
+    sections.questions,
   ];
   return (
     <article className="mx-auto flex max-w-[760px] flex-col gap-12 px-6 pt-22 pb-28">

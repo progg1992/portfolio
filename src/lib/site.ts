@@ -48,10 +48,16 @@ export const resume = { path: "/Pierce-Rogg-Resume.pdf", live: true, story: "PTR
  * analytics paragraph always matches what the site actually runs (PTR-50).
  */
 export const analytics = {
-  live: false,
+  live: true,
   provider: "Vercel Web Analytics",
   story: "PTR-35",
 } as const;
+
+/**
+ * True only in builds on Vercel. The analytics script is served by Vercel's
+ * edge, so anywhere else (local, CI) it would 404 and fail Lighthouse.
+ */
+export const onVercel = process.env.VERCEL === "1";
 
 export const external = {
   linkedin: "https://linkedin.com/in/pierce-rogg",
