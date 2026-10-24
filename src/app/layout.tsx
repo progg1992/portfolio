@@ -12,7 +12,7 @@ export const ensureStatic = "navigation";
 // Self-hosted variable fonts (SIL Open Font License; see src/fonts/*-OFL.txt).
 // Builds never fetch from a third party, which keeps CI reproducible.
 const geistSans = localFont({
-  src: "../fonts/Geist-Variable.woff2",
+  src: "../fonts/Geist-Variable-latin.woff2",
   variable: "--font-geist-sans",
   weight: "100 900",
   display: "swap",
