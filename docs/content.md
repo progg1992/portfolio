@@ -6,7 +6,7 @@ Each case study is one file in `src/content/work/`. The site builds the `/work` 
 
 1. Copy `src/content/work/_template.mdx` to `src/content/work/<slug>.mdx`. The file name must match the `slug` inside it.
 2. Fill in every field in `meta`. The template comments list the allowed values.
-3. Write any longer sections below the `meta` block in Markdown.
+3. Write any longer sections below the `meta` block in Markdown. To add a diagram, use `<Exhibit caption="...">` around a text block, or `<IncidentTimeline steps={[...]} />`. The existing studies show both.
 4. Set `published: true` when it is ready to go live.
 5. Run `npm run build`. If anything is wrong, the build stops and names the file and the field.
 6. Open a pull request into `staging` and check the case study on the preview.
@@ -25,7 +25,6 @@ Each case study is one file in `src/content/work/`. The site builds the `/work` 
 | `context`                       | employer or project, and years, as shown on the page             |
 | `problem`, `solution`, `impact` | the three-part grid on the page                                  |
 | `metrics`                       | up to 4. Each needs `value`, `label`, and `source`               |
-| `exhibit`                       | `model-tree`, `incident-timeline`, `metric-tiles`, or `none`     |
 | `order`                         | display order, unique positive whole number                      |
 | `featured`                      | `true` to show on the home page                                  |
 | `published`                     | `false` hides it everywhere without deleting it                  |

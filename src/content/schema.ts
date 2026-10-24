@@ -7,7 +7,6 @@ import { z } from "zod";
  */
 
 export const disciplines = ["infrastructure", "operations", "delivery", "documentation"] as const;
-export const exhibits = ["model-tree", "incident-timeline", "metric-tiles", "none"] as const;
 
 const text = (field: string, max: number) =>
   z
@@ -42,7 +41,6 @@ export const caseStudySchema = z
     solution: text("solution", 800),
     impact: text("impact", 600),
     metrics: z.array(metricSchema).max(4),
-    exhibit: z.enum(exhibits),
     order: z.number().int().positive(),
     featured: z.boolean(),
     published: z.boolean(),

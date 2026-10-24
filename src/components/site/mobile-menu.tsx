@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
-import { isActive, nav, resumePath } from "@/lib/site";
+import { isActive, nav, resume } from "@/lib/site";
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -107,13 +107,15 @@ export function MobileMenu() {
             })}
           </ul>
         </nav>
-        <a
-          href={resumePath}
-          download
-          className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-control border border-line-strong font-medium text-ink"
-        >
-          Download resume (PDF)
-        </a>
+        {resume.live && (
+          <a
+            href={resume.path}
+            download
+            className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-control border border-line-strong font-medium text-ink"
+          >
+            Download resume (PDF)
+          </a>
+        )}
       </div>
     </div>
   );
