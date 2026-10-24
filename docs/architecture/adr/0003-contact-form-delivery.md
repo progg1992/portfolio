@@ -1,6 +1,6 @@
 # ADR 0003: Contact form via server action and a transactional email API
 
-- **Status:** Proposed. Needs Client decision on the provider before PTR-27 starts.
+- **Status:** Accepted. Client chose Resend on 2026-10-23.
 - **Date:** 2026-10-19
 - **Issue:** PTR-27
 
@@ -8,10 +8,11 @@
 
 The form must validate on the server, resist spam, deliver to the Client's inbox, and store nothing (ADR 0002). It runs on Vercel, so outbound SMTP from a function is unreliable; an HTTPS email API is the standard route.
 
-## Decision (proposed)
+## Decision
 
 - A Next.js server action receives the form, re-validates every field with the same schema the client uses, checks a honeypot field, and enforces 5 submissions per IP per hour.
-- Delivery goes through a transactional email API over HTTPS. The candidate is Resend (free tier covers this volume, simple API, domain verification through DNS). The Client already uses Zoho Mail for business email, so Zoho's transactional service (ZeptoMail) is the alternative if the Client prefers one vendor.
+- Delivery goes through Resend's HTTPS API: the free tier covers this volume, the API is simple, and the sending domain is verified through DNS.
+- Rejected: Zoho ZeptoMail. It would keep business email and transactional email with one vendor, but the Client preferred Resend.
 - The API key and the destination address live only in Vercel environment variables.
 - The rate limit needs shared state across function instances. Options, cheapest first: Vercel's built-in firewall rate limiting on the action's path, or a small key-value store. Decide during PTR-27 after checking current Vercel plan limits.
 
