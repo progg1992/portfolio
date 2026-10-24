@@ -10,7 +10,7 @@
         "http://localhost:3200/contact",
         "http://localhost:3200/work/bdos-v3"
       ],
-      "numberOfRuns": 3,
+      "numberOfRuns": 5,
       "settings": {
         "formFactor": "mobile",
         "screenEmulation": {
