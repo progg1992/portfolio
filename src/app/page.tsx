@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Terminal } from "@/components/home/terminal";
 import { Topology } from "@/components/home/topology";
 import { buttonClasses } from "@/components/ui/button";
 import { hero } from "@/content/home";
@@ -7,8 +8,7 @@ import { getFeaturedCaseStudies } from "@/content/work";
 import { pages, resume } from "@/lib/site";
 
 // Home page as a summary hub (PTR-20, CR-1). Each teaser comes from the content
-// its page renders, and appears once that page is live (src/lib/site.ts). The
-// system_status terminal (PTR-21) goes between the hero and featured work.
+// its page renders, and appears once that page is live (src/lib/site.ts).
 // The experience and about teasers are typed here for now; PTR-49 and PTR-23
 // move them into the content those pages render.
 
@@ -95,7 +95,19 @@ export default async function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="featured-heading" className="border-t border-line">
+      <section aria-labelledby="status-heading" className="border-y border-line bg-charcoal">
+        <div className="mx-auto flex max-w-[1040px] flex-col gap-8 px-6 py-26">
+          <div className="flex flex-col items-center gap-2.5 text-center">
+            <Eyebrow n={next()} label="system_status" />
+            <h2 id="status-heading" className="text-heading font-bold">
+              What I run, deliver, and lead
+            </h2>
+          </div>
+          <Terminal />
+        </div>
+      </section>
+
+      <section aria-labelledby="featured-heading">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-8 px-6 pt-28 pb-10">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="flex flex-col gap-2.5">

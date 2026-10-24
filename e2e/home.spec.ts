@@ -7,8 +7,9 @@ test("the hero names Pierce, shows the title line, and links to the work", async
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Pierce Rogg");
   await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
   await expect(page.getByText("Available for leadership roles and consulting")).toBeVisible();
-  await expect(page.getByText("$150K", { exact: true })).toBeVisible();
-  await expect(page.getByText("$250K", { exact: true })).toBeVisible();
+  const hero = page.getByRole("main").locator("section").first();
+  await expect(hero.getByText("$150K", { exact: true })).toBeVisible();
+  await expect(hero.getByText("$250K", { exact: true })).toBeVisible();
   await expect(
     page.getByRole("main").getByRole("link", { name: "Read the case studies" }),
   ).toHaveAttribute("href", "/work");
