@@ -1,6 +1,21 @@
 /** Site-wide links and labels. One place to change them. */
 
 /**
+ * The public origin for canonical URLs, Open Graph, the sitemap, and robots
+ * (PTR-34). Set NEXT_PUBLIC_SITE_URL to the custom domain in production
+ * (PTR-36). Before that, Vercel's production URL is used, then localhost.
+ */
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000")
+).replace(/\/$/, "");
+
+/** Only production is indexed; previews and staging stay noindex (PTR-13). */
+export const indexable = process.env.VERCEL_ENV === "production";
+
+/**
  * Every internal page the header and footer can link to. `live` is false until
  * the story that builds the page ships; the story that builds a page flips its
  * flag in the same pull request. Linking to a page that does not exist is a
@@ -11,8 +26,8 @@ export const pages = {
   work: { href: "/work", label: "work", live: true, story: "PTR-26" },
   experience: { href: "/experience", label: "experience", live: true, story: "PTR-49" },
   about: { href: "/about", label: "about", live: true, story: "PTR-23" },
-  contact: { href: "/contact", label: "contact", live: false, story: "PTR-24" },
-  privacy: { href: "/privacy", label: "privacy", live: false, story: "PTR-50" },
+  contact: { href: "/contact", label: "contact", live: true, story: "PTR-24" },
+  privacy: { href: "/privacy", label: "privacy", live: true, story: "PTR-50" },
 } as const;
 
 type Page = (typeof pages)[keyof typeof pages];
@@ -27,6 +42,16 @@ export const nav: readonly Page[] = [
 
 /** The resume PDF in /public. Shown once the Client accepts the final file (PTR-8). */
 export const resume = { path: "/Pierce-Rogg-Resume.pdf", live: true, story: "PTR-8" } as const;
+
+/**
+ * Cookieless analytics (PTR-35). The privacy page reads this flag, so its
+ * analytics paragraph always matches what the site actually runs (PTR-50).
+ */
+export const analytics = {
+  live: false,
+  provider: "Vercel Web Analytics",
+  story: "PTR-35",
+} as const;
 
 export const external = {
   linkedin: "https://linkedin.com/in/pierce-rogg",

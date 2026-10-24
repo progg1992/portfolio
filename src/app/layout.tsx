@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { indexable, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // Every route on this site must be fully static (ADR 0001). Next.js validates this
@@ -31,6 +32,11 @@ export const metadata: Metadata = {
     template: "%s | Pierce Rogg",
   },
   description: "Technical project manager, principal technologist, and systems operations leader.",
+  metadataBase: new URL(siteUrl),
+  openGraph: { type: "website", siteName: "Pierce Rogg", locale: "en_US" },
+  twitter: { card: "summary_large_image" },
+  // Belt and braces with the X-Robots-Tag header in next.config.ts (PTR-13).
+  robots: indexable ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

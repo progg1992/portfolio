@@ -14,7 +14,9 @@ The form must validate on the server, resist spam, deliver to the Client's inbox
 - Delivery goes through Resend's HTTPS API: the free tier covers this volume, the API is simple, and the sending domain is verified through DNS.
 - Rejected: Zoho ZeptoMail. It would keep business email and transactional email with one vendor, but the Client preferred Resend.
 - The API key and the destination address live only in Vercel environment variables.
-- The rate limit needs shared state across function instances. Options, cheapest first: Vercel's built-in firewall rate limiting on the action's path, or a small key-value store. Decide during PTR-27 after checking current Vercel plan limits.
+- Rate limit, decided in PTR-27: two layers. The server action keeps an in-memory sliding window of 5 per IP per hour, which is exact on one instance and a speed bump across many. The edge layer is a Vercel Firewall rate rule on `POST /contact`: 5 per 10 minutes per IP, because 10 minutes is the longest window Vercel offers below Enterprise and Hobby allows one such rule (Vercel WAF rate limiting docs, checked 2026-10-24). Together they stop floods at the edge and hold steady senders to roughly 5 an hour; neither alone is an exact global count. This avoids a key-value store, which would be the only stateful service on the site (ADR 0002).
+- The browser and the server share one set of plain validation functions (`src/lib/contact/validate.ts`), so the rules cannot drift and the client bundle carries no schema library.
+- A honeypot field catches simple bots; a filled honeypot gets a normal success response so the bot learns nothing.
 
 ## Consequences
 

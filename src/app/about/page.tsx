@@ -9,6 +9,7 @@ import { external, pages } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
+  alternates: { canonical: "/about" },
   description:
     "Pierce Rogg: from writing code to running the systems it depends on. Education, certifications, and governance work.",
 };
@@ -99,7 +100,7 @@ export default function AboutPage() {
           </p>
         </div>
         {pages.contact.live && (
-          <Link href={pages.contact.href} className={buttonClasses({})}>
+          <Link href={`${pages.contact.href}?reason=consulting`} className={buttonClasses({})}>
             Start a conversation
           </Link>
         )}
