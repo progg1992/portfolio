@@ -4,15 +4,16 @@ Every requirement in the requirements specification is verified by at least one 
 
 ## Automated, every pull request
 
-| Layer                    | Tool                                               | What it proves                                                                                              | Command                   |
-| ------------------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------- |
-| Static analysis          | ESLint (Next, TypeScript, jsx-a11y), zero warnings | Code and markup rules, common accessibility mistakes                                                        | `npm run lint`            |
-| Types                    | TypeScript strict                                  | No type errors                                                                                              | `npm run typecheck`       |
-| Format                   | Prettier                                           | Consistent formatting                                                                                       | `npm run format:check`    |
-| Unit and component       | Vitest, Testing Library                            | Token contrast (33 pairs), component accessibility wiring, content schema                                   | `npm test`                |
-| Build                    | `next build`                                       | Every route prerenders static; content validates                                                            | `npm run build`           |
-| Accessibility and layout | Playwright, axe-core                               | Zero critical or serious WCAG 2.2 AA violations, no horizontal scroll, one h1, lang set, at 375 and 1440 px | `npm run test:a11y`       |
-| Performance and quality  | Lighthouse CI, mobile, median of 5                 | Performance 90+; Accessibility, Best Practices, SEO 100; LCP under 2.5 s; CLS under 0.1                     | `npm run test:lighthouse` |
+| Layer                    | Tool                                                   | What it proves                                                                                                                 | Command                                |
+| ------------------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| Static analysis          | ESLint (Next, TypeScript, jsx-a11y), zero warnings     | Code and markup rules, common accessibility mistakes                                                                           | `npm run lint`                         |
+| Types                    | TypeScript strict                                      | No type errors                                                                                                                 | `npm run typecheck`                    |
+| Format                   | Prettier                                               | Consistent formatting                                                                                                          | `npm run format:check`                 |
+| Unit and component       | Vitest, Testing Library                                | Token contrast (33 pairs), component accessibility wiring, content schema                                                      | `npm test`                             |
+| Build                    | `next build`                                           | Every route prerenders static; content validates                                                                               | `npm run build`                        |
+| Accessibility and layout | Playwright, axe-core                                   | Zero critical or serious WCAG 2.2 AA violations, no horizontal scroll, one h1, lang set, at 375 and 1440 px                    | `npm run test:a11y`                    |
+| Performance and quality  | Lighthouse CI, mobile, median of 5                     | Performance 90+; Accessibility, Best Practices, SEO 100; LCP under 2.5 s; CLS under 0.1                                        | `npm run test:lighthouse`              |
+| Performance budgets      | `scripts/check-js-budget.mjs`; e2e/performance.spec.ts | Initial JavaScript under 150 KB gzip per page (noModule polyfills excluded); every interaction under 200 ms at 4x CPU slowdown | CI Lighthouse job; `npm run test:a11y` |
 
 Run `npm run build` before `test:a11y` and `test:lighthouse`; both test the production build.
 
