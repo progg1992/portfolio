@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonClasses } from "@/components/ui/button";
-import { certifications, education, governance, heading, principles, story } from "@/content/about";
+import { approach, certifications, education, governance, heading, story } from "@/content/about";
 import { external, pages } from "@/lib/site";
 
 // About page (PTR-23, CR-1), from the approved About artboard. Content lives
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "About",
   alternates: { canonical: "/about" },
   description:
-    "Pierce Rogg: from writing code to running the systems it depends on. Education, certifications, and governance work.",
+    "Pierce Rogg, software developer and technology leader: his approach, education, certifications, and governance work.",
 };
 
 export default function AboutPage() {
@@ -28,10 +28,7 @@ export default function AboutPage() {
           {story.map((p) => (
             <p key={p.slice(0, 24)}>{p}</p>
           ))}
-          <p>
-            {principles.lead} <span className="text-ink">{principles.rules}</span>{" "}
-            {principles.close}
-          </p>
+          <p>{approach}</p>
           {pages.experience.live && (
             <Link
               href={pages.experience.href}

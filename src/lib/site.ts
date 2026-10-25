@@ -44,11 +44,14 @@ export const nav: readonly Page[] = [
 export const resume = { path: "/Pierce-Rogg-Resume.pdf", live: true, story: "PTR-8" } as const;
 
 /**
- * Cookieless analytics (PTR-35). The privacy page reads this flag, so its
- * analytics paragraph always matches what the site actually runs (PTR-50).
+ * Cookieless analytics (PTR-35): Vercel Web Analytics, loaded only in builds
+ * that run on Vercel, where the collection endpoint exists. The privacy page
+ * reads this flag, so its analytics paragraph always matches what the
+ * deployment actually runs (PTR-50). The Client enables Web Analytics in the
+ * Vercel project; on the Hobby plan it records page views only, no custom events.
  */
 export const analytics = {
-  live: false,
+  live: process.env.VERCEL === "1",
   provider: "Vercel Web Analytics",
   story: "PTR-35",
 } as const;

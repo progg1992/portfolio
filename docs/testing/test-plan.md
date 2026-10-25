@@ -12,7 +12,7 @@ Every requirement in the requirements specification is verified by at least one 
 | Unit and component       | Vitest, Testing Library                            | Token contrast (33 pairs), component accessibility wiring, content schema                                   | `npm test`                |
 | Build                    | `next build`                                       | Every route prerenders static; content validates                                                            | `npm run build`           |
 | Accessibility and layout | Playwright, axe-core                               | Zero critical or serious WCAG 2.2 AA violations, no horizontal scroll, one h1, lang set, at 375 and 1440 px | `npm run test:a11y`       |
-| Performance and quality  | Lighthouse CI, mobile, median of 3                 | Performance 90+; Accessibility, Best Practices, SEO 100; LCP under 2.5 s; CLS under 0.1                     | `npm run test:lighthouse` |
+| Performance and quality  | Lighthouse CI, mobile, median of 5                 | Performance 90+; Accessibility, Best Practices, SEO 100; LCP under 2.5 s; CLS under 0.1                     | `npm run test:lighthouse` |
 
 Run `npm run build` before `test:a11y` and `test:lighthouse`; both test the production build.
 
@@ -34,16 +34,16 @@ On the Vercel preview, not on localhost:
 
 ## Manual, before launch (PTR-31, PTR-32, PTR-33)
 
-| Check            | How                                                             | Pass                                                                               |
-| ---------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Screen reader    | NVDA with Firefox on Windows; VoiceOver with Safari on iOS      | Headings, landmarks, tabs, filter, and form errors announced correctly             |
-| Zoom and reflow  | 200% zoom at 1280 px; 320 px viewport                           | No lost content, no horizontal scroll                                              |
-| Reduced motion   | OS setting on                                                   | No animation                                                                       |
-| Cross-browser    | Chrome, Firefox, Safari (macOS and iOS), Edge, current versions | Layout and interaction correct                                                     |
-| Security headers | securityheaders.com on the staging URL                          | Grade A or better                                                                  |
-| Dependencies     | `npm audit --omit=dev`                                          | No high or critical findings                                                       |
-| Contact form     | Production, end to end                                          | Message arrives; oversized input, header injection, and rapid repeats are rejected |
-| Link previews    | LinkedIn Post Inspector                                         | Title, description, and image correct                                              |
+| Check            | How                                                                                                                      | Pass                                                                               |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| Screen reader    | NVDA with Firefox on Windows; VoiceOver with Safari on iOS, following [screen-reader-script.md](screen-reader-script.md) | Headings, landmarks, tabs, filter, and form errors announced correctly             |
+| Zoom and reflow  | 200% zoom at 1280 px; 320 px viewport                                                                                    | No lost content, no horizontal scroll                                              |
+| Reduced motion   | OS setting on                                                                                                            | No animation                                                                       |
+| Cross-browser    | Chrome, Firefox, Safari (macOS and iOS), Edge, current versions                                                          | Layout and interaction correct                                                     |
+| Security headers | securityheaders.com on the staging URL                                                                                   | Grade A or better                                                                  |
+| Dependencies     | `npm audit --omit=dev`                                                                                                   | No high or critical findings                                                       |
+| Contact form     | Production, end to end                                                                                                   | Message arrives; oversized input, header injection, and rapid repeats are rejected |
+| Link previews    | LinkedIn Post Inspector                                                                                                  | Title, description, and image correct                                              |
 
 ## Defects
 

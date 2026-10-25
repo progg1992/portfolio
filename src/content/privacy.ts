@@ -28,9 +28,9 @@ export const sections = {
     paragraphs: ["This site sets no cookies."],
   },
   deletion: {
-    heading: "Deleting your message",
+    heading: "Questions about your message",
     paragraphs: [
-      "Ask through the contact form or on LinkedIn, and I will delete your message from my inbox and ask Resend to remove it before the 30 days are up. I will confirm when it is done.",
+      "To ask about a message you sent, or to have it removed, write through the contact form or on LinkedIn.",
     ],
   },
 } as const;
@@ -38,7 +38,7 @@ export const sections = {
 export const analyticsOn = {
   heading: "Analytics",
   paragraphs: [
-    "The site counts page views with Vercel Web Analytics, which uses no cookies. It sees the page, the referring site, country and region, browser, operating system, and device type. To count unique visitors it uses a hash of the request that is discarded after 24 hours, and it never stores your IP address. I see only totals.",
+    "The site counts page views with Vercel Web Analytics, which uses no cookies. It records the page, the referring site, country and region, browser, operating system, and device type. To count unique visitors it uses a hash of the request that is discarded after 24 hours, and it does not store your IP address. I see only totals.",
   ],
 };
 
