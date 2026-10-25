@@ -47,3 +47,4 @@ Each significant choice has an ADR in `adr/`. Status values: Proposed, Accepted,
 | [0005](adr/0005-styleguide-route.md)          | Internal styleguide route, blocked in production             | Accepted |
 | [0006](adr/0006-self-hosted-fonts.md)         | Self-hosted fonts                                            | Accepted |
 | [0007](adr/0007-case-study-content-model.md)  | MDX case studies with schema-validated metadata              | Accepted |
+| [0008](adr/0008-security-headers.md)          | Security headers; static-compatible CSP                      | Accepted |
