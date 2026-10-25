@@ -18,13 +18,13 @@ Vercel edge (TLS, CDN cache, security headers)
 
 ## What runs where
 
-| Concern      | Where                                                | Notes                                                      |
-| ------------ | ---------------------------------------------------- | ---------------------------------------------------------- |
-| Pages        | Built once by `next build`, served as static files   | CI fails if any route renders dynamically                  |
-| Case studies | MDX files in `src/content/work/`, validated at build | Invalid frontmatter or an unsourced metric fails the build |
-| Contact form | Next.js server action on Vercel                      | Re-validates every field; nothing is stored                |
-| Analytics    | Cookieless page and event counts                     | No personal data, no consent banner needed                 |
-| Fonts        | Self-hosted woff2 in `src/fonts`                     | No third-party requests at build or run time               |
+| Concern      | Where                                                                                              | Notes                                                      |
+| ------------ | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Pages        | Built once by `next build`, served as static files                                                 | CI fails if any route renders dynamically                  |
+| Case studies | MDX files in `src/content/work/`, validated at build                                               | Invalid frontmatter or an unsourced metric fails the build |
+| Contact form | Next.js server action on Vercel                                                                    | Re-validates every field; nothing is stored                |
+| Analytics    | Vercel Web Analytics: cookieless page-view counts; Vercel builds only (Hobby has no custom events) | No personal data, no consent banner needed                 |
+| Fonts        | Self-hosted woff2 in `src/fonts`                                                                   | No third-party requests at build or run time               |
 
 ## Environments
 
@@ -47,3 +47,4 @@ Each significant choice has an ADR in `adr/`. Status values: Proposed, Accepted,
 | [0005](adr/0005-styleguide-route.md)          | Internal styleguide route, blocked in production             | Accepted |
 | [0006](adr/0006-self-hosted-fonts.md)         | Self-hosted fonts                                            | Accepted |
 | [0007](adr/0007-case-study-content-model.md)  | MDX case studies with schema-validated metadata              | Accepted |
+| [0008](adr/0008-security-headers.md)          | Security headers; static-compatible CSP                      | Accepted |

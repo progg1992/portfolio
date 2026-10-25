@@ -24,7 +24,7 @@ test("credentials match the resume and the Client's decisions", async ({ page })
 
 test("the story is first person and the governance card is present", async ({ page }) => {
   await page.goto("/about");
-  await expect(page.getByText(/^I came up writing code/)).toBeVisible();
+  await expect(page.getByText(/^I’m a software developer and technology leader/)).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "AI ethics, governance, and SOP development" }),
   ).toBeVisible();
@@ -32,6 +32,14 @@ test("the story is first person and the governance card is present", async ({ pa
 
 test("the home page links to about from its teaser", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: /From the Upper Peninsula/ }).click();
+  await page.getByRole("link", { name: /The developer behind the code/ }).click();
   await expect(page).toHaveURL(/\/about$/);
+});
+
+test("the approach paragraph and softened governance claim", async ({ page }) => {
+  await page.goto("/about");
+  const main = page.getByRole("main");
+  await expect(main).toContainText("My approach to development rests on four principles");
+  await expect(main).toContainText("architecture decision records for significant changes");
+  await expect(main).not.toContainText("every material change");
 });

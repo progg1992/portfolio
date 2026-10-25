@@ -11,7 +11,8 @@ test("privacy covers the form, retention, analytics, and deletion", async ({ pag
   );
   await expect(main).toContainText("Resend");
   await expect(main).toContainText("30 days");
-  await expect(main.getByRole("heading", { name: "Deleting your message" })).toBeVisible();
+  await expect(main.getByRole("heading", { name: "Questions about your message" })).toBeVisible();
+  await expect(main).toContainText("to have it removed");
   if (analytics.live) {
     await expect(main).toContainText("Vercel Web Analytics");
   } else {

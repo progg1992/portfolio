@@ -65,7 +65,7 @@ jobs:
     name: Lighthouse budgets (mobile)
     needs: checks
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     # Score the artifact production will serve. Without this, next.config.ts adds
     # the preview X-Robots-Tag: noindex header (PTR-13) and the SEO audit
     # is-crawlable fails by design. The noindex header itself is covered by
@@ -81,8 +81,9 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:lighthouse
-      - name: Check robots.txt and sitemap (production build)
+      - name: Check robots.txt, sitemap, and JavaScript budget (production build)
         run: |
           npm run start -- -p 3200 &
           for i in $(seq 1 30); do curl -sf http://localhost:3200/ >/dev/null && break; sleep 1; done
           node scripts/check-seo.mjs http://localhost:3200
+          node scripts/check-js-budget.mjs http://localhost:3200
