@@ -71,8 +71,8 @@ Run these on every page: home, work, one case study, experience, about, contact,
 | #   | Do                             | Expect to hear                                                       |
 | --- | ------------------------------ | -------------------------------------------------------------------- |
 | W1  | Reach the filter               | "Filter by discipline, group", then "all, toggle button, pressed"    |
-| W2  | Activate "documentation"       | "pressed", then shortly after "1 of 3 case studies in Documentation" |
-| W3  | Activate "documentation" again | Filter clears; "3 case studies" is announced                         |
+| W2  | Activate "documentation"       | "pressed", then shortly after "1 of 4 case studies in Documentation" |
+| W3  | Activate "documentation" again | Filter clears; "4 case studies" is announced                         |
 | W4  | Move through a card            | One link per card (the title), not several links for one card        |
 
 ### Case study (open BDOS v3)

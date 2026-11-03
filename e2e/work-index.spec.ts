@@ -6,7 +6,7 @@ const cards = (page: import("@playwright/test").Page) =>
 
 test("one card per published case study, linking to its page", async ({ page }) => {
   await page.goto("/work");
-  await expect(cards(page)).toHaveCount(3);
+  await expect(cards(page)).toHaveCount(4);
   const first = cards(page).first();
   await expect(first).toContainText("CS-01");
   await expect(first).toContainText("146");
@@ -27,16 +27,16 @@ test("filtering sets aria-pressed, the URL, and the status count", async ({ page
   await expect(all).toHaveAttribute("aria-pressed", "false");
   await expect(page).toHaveURL(/\/work\?d=documentation$/);
   await expect(cards(page)).toHaveCount(1);
-  await expect(page.getByRole("status")).toHaveText("1 of 3 case studies in Documentation");
+  await expect(page.getByRole("status")).toHaveText("1 of 4 case studies in Documentation");
 
   await docs.click();
   await expect(page).toHaveURL(/\/work$/);
-  await expect(cards(page)).toHaveCount(3);
+  await expect(cards(page)).toHaveCount(4);
 });
 
 test("a shared filtered URL opens filtered", async ({ page }) => {
   await page.goto("/work?d=delivery");
-  await expect(cards(page)).toHaveCount(1);
+  await expect(cards(page)).toHaveCount(2);
   await expect(page.getByRole("button", { name: "delivery" })).toHaveAttribute(
     "aria-pressed",
     "true",
@@ -45,7 +45,7 @@ test("a shared filtered URL opens filtered", async ({ page }) => {
 
 test("an unknown filter value shows everything", async ({ page }) => {
   await page.goto("/work?d=nonsense");
-  await expect(cards(page)).toHaveCount(3);
+  await expect(cards(page)).toHaveCount(4);
 });
 
 test.describe("without JavaScript", () => {
@@ -53,7 +53,7 @@ test.describe("without JavaScript", () => {
 
   test("every card shows and links work, even with a filter in the URL", async ({ page }) => {
     await page.goto("/work?d=delivery");
-    await expect(cards(page)).toHaveCount(3);
+    await expect(cards(page)).toHaveCount(4);
     await cards(page).nth(1).getByRole("link").click();
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page).toHaveURL(/\/work\/[a-z-]+$/);

@@ -5,6 +5,7 @@ const studies = [
   { slug: "bdos-v3", id: "CS-01", firstMetric: "146" },
   { slug: "incident-response", id: "CS-02", firstMetric: "3" },
   { slug: "distributed-delivery", id: "CS-03", firstMetric: "-25%" },
+  { slug: "building-bluedevildev", id: "CS-04", firstMetric: "111" },
 ];
 
 for (const s of studies) {
