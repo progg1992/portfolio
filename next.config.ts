@@ -38,6 +38,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // The BDOS v3 case study was withdrawn on Nov 2, 2026; shared links land on the index.
+  async redirects() {
+    return [{ source: "/work/bdos-v3", destination: "/work", permanent: true }];
+  },
   async headers() {
     return [
       {

@@ -68,21 +68,21 @@ Run these on every page: home, work, one case study, experience, about, contact,
 
 ### Work
 
-| #   | Do                             | Expect to hear                                                       |
-| --- | ------------------------------ | -------------------------------------------------------------------- |
-| W1  | Reach the filter               | "Filter by discipline, group", then "all, toggle button, pressed"    |
-| W2  | Activate "documentation"       | "pressed", then shortly after "1 of 4 case studies in Documentation" |
-| W3  | Activate "documentation" again | Filter clears; "4 case studies" is announced                         |
-| W4  | Move through a card            | One link per card (the title), not several links for one card        |
+| #   | Do                              | Expect to hear                                                        |
+| --- | ------------------------------- | --------------------------------------------------------------------- |
+| W1  | Reach the filter                | "Filter by discipline, group", then "all, toggle button, pressed"     |
+| W2  | Activate "infrastructure"       | "pressed", then shortly after "1 of 3 case studies in Infrastructure" |
+| W3  | Activate "infrastructure" again | Filter clears; "3 case studies" is announced                          |
+| W4  | Move through a card             | One link per card (the title), not several links for one card         |
 
-### Case study (open BDOS v3)
+### Case study (open Production incident response and recovery)
 
-| #   | Do                        | Expect to hear                                                              |
-| --- | ------------------------- | --------------------------------------------------------------------------- |
-| C1  | Reach the breadcrumb      | "Breadcrumb, navigation", "~/work, link", then the slug as the current page |
-| C2  | Reach the figures strip   | "Key figures, region", each value read with its label                       |
-| C3  | Reach the exhibit tree    | A region named after its caption; NVDA can **Tab** into it                  |
-| C4  | Reach "More case studies" | A navigation with two links, previous and next                              |
+| #   | Do                          | Expect to hear                                                              |
+| --- | --------------------------- | --------------------------------------------------------------------------- |
+| C1  | Reach the breadcrumb        | "Breadcrumb, navigation", "~/work, link", then the slug as the current page |
+| C2  | Reach the figures strip     | "Key figures, region", each value read with its label                       |
+| C3  | Reach the incident timeline | A region named after its caption; NVDA can **Tab** into it                  |
+| C4  | Reach "More case studies"   | A navigation with two links, previous and next                              |
 
 ### Experience
 

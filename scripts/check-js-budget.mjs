@@ -7,7 +7,15 @@ import { gzipSync } from "node:zlib";
 
 const base = process.argv[2] ?? "http://localhost:3200";
 const BUDGET = 150 * 1024;
-const routes = ["/", "/work", "/work/bdos-v3", "/experience", "/about", "/contact", "/privacy"];
+const routes = [
+  "/",
+  "/work",
+  "/work/building-bluedevildev",
+  "/experience",
+  "/about",
+  "/contact",
+  "/privacy",
+];
 
 let failed = false;
 const cache = new Map();
