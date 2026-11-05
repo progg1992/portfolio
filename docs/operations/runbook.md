@@ -9,8 +9,7 @@
 5. To release, open a pull request from `staging` into `main` titled `Release YYYY-MM-DD`, listing the PTR issues it carries.
 6. Merge with a merge commit. Vercel deploys `main` to production.
 
-`main` accepts pull requests only from `staging`. The required check **Only staging can merge into main** (`.github/workflows/main-pr-source.yml`) fails any other source, and the Production ruleset allows merge commits only, so `staging` and `main` never drift apart. Spike and feature branches never target `main`.
-7. Run the smoke test below. Record the release in the YouTrack sprint.
+`main` accepts pull requests only from `staging`. The required check **Only staging can merge into main** (`.github/workflows/main-pr-source.yml`) fails any other source, and the Production ruleset allows merge commits only, so `staging` and `main` never drift apart. Spike and feature branches never target `main`. 7. Run the smoke test below. Record the release in the YouTrack sprint.
 
 ## Smoke test after every production deploy
 
