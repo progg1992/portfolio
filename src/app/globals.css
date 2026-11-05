@@ -149,3 +149,34 @@
     box-shadow: 0 0 0 8px transparent;
   }
 }
+
+/* PTR-28 spike, approach B: the static SVG tilted and swayed in CSS 3D. No JavaScript. */
+@media (prefers-reduced-motion: no-preference) {
+  .topology[data-topology="css"] {
+    perspective: 900px;
+  }
+  .topology[data-topology="css"] > svg {
+    transform-origin: 50% 50%;
+    animation: topology-sway 14s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  .topology[data-topology="css"] svg circle[r="6"] {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: topology-pulse 2.4s ease-in-out infinite;
+  }
+}
+@keyframes topology-sway {
+  from {
+    transform: rotateX(18deg) rotateY(-14deg);
+  }
+  to {
+    transform: rotateX(10deg) rotateY(14deg);
+  }
+}
+@keyframes topology-pulse {
+  50% {
+    transform: scale(1.6);
+    opacity: 0.5;
+  }
+}

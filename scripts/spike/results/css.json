@@ -1,0 +1,72 @@
+{
+  "label": "css",
+  "weight": {
+    "initialJsKB": 141.6,
+    "afterLoadKB": 4.3,
+    "afterLoadFiles": ["2_k57dvw6mf50.js 3.0 KB", "3k8224iox_of1.js 1.3 KB"],
+    "canvasRendered": false
+  },
+  "lighthouse": {
+    "median": {
+      "score": 97,
+      "lcp": 2571,
+      "tbt": 42,
+      "cls": 0,
+      "si": 922,
+      "tti": 2653,
+      "totalKB": 262
+    },
+    "runs": [
+      {
+        "score": 96,
+        "lcp": 2644,
+        "tbt": 68,
+        "cls": 0,
+        "si": 922,
+        "tti": 2727,
+        "totalKB": 262,
+        "glbRequested": false
+      },
+      {
+        "score": 97,
+        "lcp": 2550,
+        "tbt": 45,
+        "cls": 0,
+        "si": 915,
+        "tti": 2633,
+        "totalKB": 262,
+        "glbRequested": false
+      },
+      {
+        "score": 97,
+        "lcp": 2571,
+        "tbt": 42,
+        "cls": 0,
+        "si": 954,
+        "tti": 2653,
+        "totalKB": 262,
+        "glbRequested": false
+      },
+      {
+        "score": 97,
+        "lcp": 2596,
+        "tbt": 30,
+        "cls": 0,
+        "si": 986,
+        "tti": 2679,
+        "totalKB": 262,
+        "glbRequested": false
+      },
+      {
+        "score": 97,
+        "lcp": 2544,
+        "tbt": 31,
+        "cls": 0,
+        "si": 910,
+        "tti": 2626,
+        "totalKB": 262,
+        "glbRequested": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "label": "static",
+  "form": "desktop",
+  "weight": {
+    "initialJsKB": 141.6,
+    "afterLoadKB": 4.3,
+    "afterLoadFiles": ["3k8224iox_of1.js 1.3 KB", "2_k57dvw6mf50.js 3.0 KB"],
+    "canvasRendered": false
+  },
+  "lighthouse": {
+    "median": {
+      "score": 100,
+      "lcp": 619,
+      "tbt": 0,
+      "cls": 0,
+      "si": 437,
+      "tti": 619,
+      "totalKB": 276
+    },
+    "runs": [
+      {
+        "score": 100,
+        "lcp": 665,
+        "tbt": 0,
+        "cls": 0,
+        "si": 443,
+        "tti": 665,
+        "totalKB": 276,
+        "glbRequested": false
+      },
+      {
+        "score": 100,
+        "lcp": 619,
+        "tbt": 0,
+        "cls": 0,
+        "si": 444,
+        "tti": 619,
+        "totalKB": 276,
+        "glbRequested": false
+      },
+      {
+        "score": 100,
+        "lcp": 549,
+        "tbt": 0,
+        "cls": 0,
+        "si": 403,
+        "tti": 549,
+        "totalKB": 276,
+        "glbRequested": false
+      },
+      {
+        "score": 100,
+        "lcp": 648,
+        "tbt": 0,
+        "cls": 0,
+        "si": 437,
+        "tti": 648,
+        "totalKB": 276,
+        "glbRequested": false
+      },
+      {
+        "score": 100,
+        "lcp": 605,
+        "tbt": 0,
+        "cls": 0,
+        "si": 421,
+        "tti": 605,
+        "totalKB": 276,
+        "glbRequested": false
+      }
+    ]
+  }
+}
