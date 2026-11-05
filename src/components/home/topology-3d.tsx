@@ -19,9 +19,14 @@ function Model({ onReady }: { onReady: () => void }) {
   );
 }
 
-export function Topology3D({ onReady }: { onReady: () => void }) {
+export function Topology3D({ onReady, active = true }: { onReady: () => void; active?: boolean }) {
   return (
-    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 7.5], fov: 45 }} gl={{ antialias: true }}>
+    <Canvas
+      frameloop={active ? "always" : "never"}
+      dpr={[1, 1.5]}
+      camera={{ position: [0, 0, 7.5], fov: 45 }}
+      gl={{ antialias: true }}
+    >
       <ambientLight intensity={0.6} />
       <directionalLight position={[3, 4, 5]} intensity={1.4} />
       <Suspense fallback={null}>

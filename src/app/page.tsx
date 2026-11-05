@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Terminal } from "@/components/home/terminal";
 import { Topology } from "@/components/home/topology";
+import { NetworkSection } from "@/components/home/network-section";
 import { buttonClasses } from "@/components/ui/button";
 import { teaser as aboutTeaser } from "@/content/about";
 import { teaser as experienceTeaser } from "@/content/experience";
@@ -115,6 +116,8 @@ export default async function Home() {
           <Terminal />
         </div>
       </section>
+
+      {process.env.NEXT_PUBLIC_TOPOLOGY === "hybrid" && <NetworkSection />}
 
       <section aria-labelledby="featured-heading">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-8 px-6 pt-28 pb-10">

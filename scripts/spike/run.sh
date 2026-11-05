@@ -9,7 +9,8 @@ for v in ${VARIANTS:-static css r3f}; do
   VERCEL_ENV=production npm run build >"$OUT_DIR/build-$v.log" 2>&1
   node node_modules/next/dist/bin/next start -p 3210 >"$OUT_DIR/server-$v.log" 2>&1 &
   for i in $(seq 1 30); do curl -sf http://localhost:3210/ >/dev/null && break; sleep 1; done
-  curl -s http://localhost:3210/ | grep -q "data-topology=\"$v\"" || { echo "server is not serving $v"; exit 1; }
+  expect="data-topology=\"$v\""; [ "$v" = hybrid ] && expect='id="network-heading"'
+  curl -s http://localhost:3210/ | grep -q "$expect" || { echo "server is not serving $v"; exit 1; }
   node scripts/spike/measure.mjs "$v" http://localhost:3210 >/dev/null || echo "measure failed for $v"
   pkill -f "next-serve[r]" || true; pkill -f "bin/nex[t] start" || true; sleep 2
 done

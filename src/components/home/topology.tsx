@@ -10,7 +10,7 @@ const variant = process.env.NEXT_PUBLIC_TOPOLOGY;
 export function Topology() {
   return (
     <figure
-      data-topology={variant ?? "static"}
+      data-topology={variant === "hybrid" ? "css" : (variant ?? "static")}
       className="topology relative m-0 aspect-[1/0.9] overflow-hidden rounded-2xl border border-line bg-charcoal"
     >
       <figcaption className="absolute top-3.5 left-4 font-mono text-[11px] text-subtle">

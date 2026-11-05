@@ -1,0 +1,42 @@
+{
+  "cpuSlowdown": 4,
+  "scroll": [
+    {
+      "longestTaskMs": 247,
+      "longTasks": [247],
+      "importToReadyMs": 3445
+    },
+    {
+      "longestTaskMs": 189,
+      "longTasks": [189],
+      "importToReadyMs": 3744
+    },
+    {
+      "longestTaskMs": 223,
+      "longTasks": [223],
+      "importToReadyMs": 3377
+    }
+  ],
+  "clicks": [
+    {
+      "offsetMs": 0,
+      "control": "Schedule a conversation",
+      "worstMs": 192
+    },
+    {
+      "offsetMs": 100,
+      "control": "Schedule a conversation",
+      "worstMs": 120
+    },
+    {
+      "offsetMs": 250,
+      "control": "Schedule a conversation",
+      "worstMs": 176
+    },
+    {
+      "offsetMs": 500,
+      "control": "Schedule a conversation",
+      "worstMs": 160
+    }
+  ]
+}
