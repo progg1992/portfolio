@@ -7,8 +7,9 @@
 3. Review against the Definition of Done. The product owner accepts the story on the preview.
 4. Merge. Vercel deploys `staging` to the staging URL. Check the change there.
 5. To release, open a pull request from `staging` into `main` titled `Release YYYY-MM-DD`, listing the PTR issues it carries.
-6. Merge. Vercel deploys `main` to production.
-7. Run the smoke test below. Record the release in the YouTrack sprint.
+6. Merge with a merge commit. Vercel deploys `main` to production.
+
+`main` accepts pull requests only from `staging`. The required check **Only staging can merge into main** (`.github/workflows/main-pr-source.yml`) fails any other source, and the Production ruleset allows merge commits only, so `staging` and `main` never drift apart. Spike and feature branches never target `main`. 7. Run the smoke test below. Record the release in the YouTrack sprint.
 
 ## Smoke test after every production deploy
 
@@ -26,7 +27,7 @@ Production is a set of immutable Vercel deployments, so rollback is a pointer ch
 1. In Vercel, open the project, then **Deployments**, filtered to Production.
 2. Find the last good deployment, open its menu, and choose **Instant Rollback** (or **Promote to Production**).
 3. Confirm the smoke test passes.
-4. Revert the bad commit on `main` through a pull request, so the next deploy does not reintroduce it, and merge the revert back into `staging`.
+4. Revert the bad commit on a branch from `staging`, merge it into `staging`, then release `staging` to `main` as usual, so the next deploy does not reintroduce it. The production rollback in step 2 already protects visitors while this runs through CI.
 5. Open a Bug in YouTrack describing what broke and link the revert.
 
 Target time from noticing a bad deploy to rollback: 10 minutes.

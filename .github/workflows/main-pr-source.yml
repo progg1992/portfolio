@@ -1,0 +1,29 @@
+name: Release source
+
+# Production takes changes only through a release PR from staging (PR #34 merged
+# a spike branch straight into main, Nov 5, 2026). Make this job a required
+# check on main's ruleset; a required check that never reports blocks the merge.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  source:
+    name: Only staging can merge into main
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Check the source branch
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ "$HEAD_REF" != "staging" ] || [ "$HEAD_REPO" != "$REPO" ]; then
+            echo "::error::Pull requests into main must come from staging in $REPO. This one comes from $HEAD_REPO:$HEAD_REF."
+            exit 1
+          fi
+          echo "Source is $REPO:staging."
