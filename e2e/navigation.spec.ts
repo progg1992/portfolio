@@ -19,7 +19,7 @@ test("the skip link is the first focusable element and moves focus to main", asy
 });
 
 test("every page has exactly one main landmark", async ({ page }) => {
-  for (const route of ["/", "/work/bdos-v3", "/styleguide"]) {
+  for (const route of ["/", "/work/incident-response", "/styleguide"]) {
     await page.goto(route);
     await expect(page.locator("main")).toHaveCount(1);
   }
@@ -38,7 +38,7 @@ test.describe("desktop", () => {
 
   test("the current section is marked with aria-current", async ({ page }) => {
     test.skip(!pages.work.live, `work index ships with ${pages.work.story}`);
-    await page.goto("/work/bdos-v3");
+    await page.goto("/work/incident-response");
     const primary = page.getByRole("navigation", { name: "Primary" });
     await expect(primary.getByRole("link", { name: "work" })).toHaveAttribute(
       "aria-current",

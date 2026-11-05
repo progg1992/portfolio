@@ -1,0 +1,82 @@
+export const meta = {
+  id: "CS-01",
+  slug: "building-bluedevildev",
+  title: "Building bluedevildev.com: a company site that runs the business",
+  subheading: "Marketing, lead intake, client portal and scheduling on one platform",
+  summary: "The Blue Devil Development platform, built alongside running the company.",
+  discipline: "delivery",
+  stack: ["Next.js", "Strapi", "Odoo", "Docker", "GitHub Actions", "Cloudflare"],
+  context: "Blue Devil Development, 2025 to present",
+  problem:
+    "Blue Devil Development needed more than a brochure. The site had to market the company, turn form submissions into CRM records, and give clients a place to open support tickets and book meetings. A simple marketing site on Vercel held the company's place while the real platform was built. As the company's only engineer, I also needed a system I could change safely and recover alone.",
+  solution:
+    "I built it on and off for almost two years while running the company. Next.js serves the site, Strapi holds the content, and Odoo is the CRM. Every form is validated on the server, checked for spam, matched against existing contacts, and turned into a lead with its follow-up tasks. Signed-in clients open tickets, request hosting and maintenance work, and book meetings in a portal. Paid sessions hand off to Odoo's booking page, which takes payment through Stripe before the time is booked.",
+  impact:
+    "The company runs marketing, lead intake, client support and scheduling on one platform it controls. Every change passes the same automated checks before it can merge, releases can be rolled back, and the first restore drill brought the database and CMS back in 57 seconds. Business results will be added after the first full quarter of live data.",
+  metrics: [
+    {
+      value: "111",
+      label: "automated test files, from unit to end to end",
+      source: "bluedevildev.com repository, Nov 2026",
+    },
+    {
+      value: "0",
+      label: "WCAG 2.2 AA violations allowed in any build",
+      source: "bluedevildev.com test suite, Nov 2026",
+    },
+    {
+      value: "57 s",
+      label: "database and CMS restore in the first recovery drill",
+      source: "Blue Devil Development staging restore drill, Nov 1, 2026",
+    },
+    {
+      value: "14",
+      label: "appointment types bookable from the site",
+      source: "bluedevildev.com scheduling configuration, Nov 2026",
+    },
+  ],
+  order: 1,
+  featured: true,
+  published: true,
+};
+
+## How a form becomes a lead
+
+Nothing in the browser talks to the CRM. Each form posts to a server route that runs the same steps in the same order, so a new form gets the same protection as the old ones.
+
+<Exhibit caption="lead intake">
+
+```text
+form submit
+  ─► validate on the server     reject bad input
+  ─► spam and abuse checks      drop bots quietly
+  ─► find or create contact     no duplicate people
+  ─► create lead                with follow-up tasks
+  ─► confirmation email         to the sender
+```
+
+</Exhibit>
+
+Site content follows the same rule as code. It is written into a versioned seed script and loaded from there, so a copy change is reviewed and tested before it reaches the site, and nothing lives only in an admin panel.
+
+## Releases I can undo
+
+A change moves from a feature branch to staging to production, and each step deploys automatically. Five checks run in parallel before anything merges: policy and formatting, the application tests, a security scan, CMS integration tests against a real database, and a full build with end-to-end, accessibility and performance tests. Every image a server runs is pinned to an exact version, and a release only counts once a public smoke test passes. A rollback will not start a CMS version older than its database, because that is the one rollback that destroys data.
+
+## The incident that changed how I merge
+
+<IncidentTimeline
+  caption="stale branch merge"
+  steps={[
+    { label: "ALERT", tone: "alert", text: "A squash merge of a long-lived branch silently reverted weeks of finished work" },
+    { label: "TRIAGE", tone: "warn", text: "Lint and typecheck began failing on every deploy; a diff against the branch's base showed what had been rewound" },
+    { label: "FIX", tone: "info", text: "Restored each reverted change and added the tests the lost work never had" },
+    { label: "HARDEN", tone: "accent", text: "Merge commits only, a diff against staging before any long-lived merge, and direct pushes blocked" },
+  ]}
+/>
+
+The rule now lives in three places: the repository settings, a local hook that refuses the push, and the written release process.
+
+## Recovery, measured
+
+Backups leave the server every day, and a scheduled workflow fails loudly if one is missing. Once a quarter, a drill restores the latest backup into an isolated environment and checks the content against what the site should hold. The targets are written down and approved: lose at most 24 hours of data, and be back within 4 hours. The first drill restored the database and CMS in 57 seconds, from a backup under 20 minutes old.

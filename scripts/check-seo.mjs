@@ -20,7 +20,7 @@ for (const path of [
   "/about",
   "/contact",
   "/privacy",
-  "/work/bdos-v3",
+  "/work/building-bluedevildev",
 ]) {
   if (!sitemap.includes(`${path}</loc>`)) fail(`sitemap is missing ${path}`);
 }

@@ -29,8 +29,8 @@ test("featured case studies come from the content model and link to their pages"
   const featured = page.getByRole("region", { name: "Architectural case studies" });
   const links = featured.getByRole("listitem").getByRole("link");
   await expect(links).toHaveCount(3);
-  await expect(links.nth(0)).toHaveAttribute("href", "/work/bdos-v3");
-  await expect(links.nth(0)).toContainText("146 canonical models across 14 domains");
+  await expect(links.nth(0)).toHaveAttribute("href", "/work/building-bluedevildev");
+  await expect(links.nth(0)).toContainText("The Blue Devil Development platform");
 });
 
 test("section numbers run in order with no gaps", async ({ page }) => {
