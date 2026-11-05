@@ -8,7 +8,7 @@
         "http://localhost:3200/work",
         "http://localhost:3200/experience",
         "http://localhost:3200/contact",
-        "http://localhost:3200/work/bdos-v3"
+        "http://localhost:3200/work/building-bluedevildev"
       ],
       "numberOfRuns": 5,
       "settings": {

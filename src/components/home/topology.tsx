@@ -3,16 +3,9 @@
  * version is post-launch (PTR-47). Colors are the design tokens as literals,
  * since SVG presentation attributes cannot read Tailwind classes.
  */
-import { Topology3DLoader } from "./topology-3d-loader";
-
-const variant = process.env.NEXT_PUBLIC_TOPOLOGY;
-
 export function Topology() {
   return (
-    <figure
-      data-topology={variant === "hybrid" ? "css" : (variant ?? "static")}
-      className="topology relative m-0 aspect-[1/0.9] overflow-hidden rounded-2xl border border-line bg-charcoal"
-    >
+    <figure className="relative m-0 aspect-[1/0.9] overflow-hidden rounded-2xl border border-line bg-charcoal">
       <figcaption className="absolute top-3.5 left-4 font-mono text-[11px] text-subtle">
         topology.svg
       </figcaption>
@@ -109,7 +102,6 @@ export function Topology() {
           <line x1="286" y1="412" x2="286" y2="434" stroke="#A855F7" strokeWidth="1.5" />
         </g>
       </svg>
-      {variant === "r3f" && <Topology3DLoader />}
     </figure>
   );
 }
