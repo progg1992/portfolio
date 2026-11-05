@@ -1,6 +1,6 @@
 # ADR 0009: CSS 3D hero for everyone; React Three Fiber in a desktop-only section below the fold
 
-- **Status:** Proposed
+- **Status:** Accepted (Client, Nov 5, 2026)
 - **Date:** 2026-11-04
 - **Issue:** PTR-28 (spike), PTR-29, PTR-47; follows ADR 0004
 
