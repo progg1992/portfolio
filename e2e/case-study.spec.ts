@@ -2,9 +2,9 @@ import { expect, test } from "@playwright/test";
 
 // PTR-22: one template renders every case study.
 const studies = [
-  { slug: "bdos-v3", id: "CS-01", firstMetric: "146" },
   { slug: "incident-response", id: "CS-02", firstMetric: "3" },
   { slug: "distributed-delivery", id: "CS-03", firstMetric: "-25%" },
+  { slug: "building-bluedevildev", id: "CS-01", firstMetric: "111" },
 ];
 
 for (const s of studies) {
@@ -28,23 +28,33 @@ for (const s of studies) {
 test("previous and next follow the content order", async ({ page }) => {
   await page.goto("/work/incident-response");
   const more = page.getByRole("navigation", { name: "More case studies" });
-  await expect(more.getByRole("link").first()).toHaveAttribute("href", "/work/bdos-v3");
+  await expect(more.getByRole("link").first()).toHaveAttribute(
+    "href",
+    "/work/building-bluedevildev",
+  );
   await expect(more.getByRole("link").last()).toHaveAttribute("href", "/work/distributed-delivery");
 });
 
 test("each case study has its own title and description", async ({ page }) => {
-  await page.goto("/work/bdos-v3");
-  await expect(page).toHaveTitle("BDOS v3: enterprise documentation architecture | Pierce Rogg");
+  await page.goto("/work/building-bluedevildev");
+  await expect(page).toHaveTitle(
+    "Building bluedevildev.com: a company site that runs the business | Pierce Rogg",
+  );
   await expect(page.locator('meta[name="description"]')).toHaveAttribute(
     "content",
-    /146 canonical models/,
+    /The Blue Devil Development platform/,
   );
 });
 
 test("exhibits render as real text", async ({ page }) => {
-  await page.goto("/work/bdos-v3");
-  await expect(page.getByText("exhibit: model tree")).toBeVisible();
-  await expect(page.locator("figure pre")).toContainText("146 canonical");
+  await page.goto("/work/building-bluedevildev");
+  await expect(page.getByText("exhibit: lead intake")).toBeVisible();
+  await expect(page.locator("figure pre").first()).toContainText("find or create contact");
   await page.goto("/work/incident-response");
   await expect(page.locator("figure ol li")).toHaveCount(4);
+});
+
+test("the withdrawn BDOS v3 link lands on the work index", async ({ page }) => {
+  await page.goto("/work/bdos-v3");
+  await expect(page).toHaveURL(/\/work$/);
 });

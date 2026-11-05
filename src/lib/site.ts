@@ -62,7 +62,7 @@ export const external = {
   bdd: "https://bluedevildev.com",
 } as const;
 
-/** True when `pathname` is `href` or a page beneath it, so /work/bdos-v3 marks "work" active. */
+/** True when `pathname` is `href` or a page beneath it, so /work/incident-response marks "work" active. */
 export function isActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
