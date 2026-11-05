@@ -48,3 +48,4 @@ Each significant choice has an ADR in `adr/`. Status values: Proposed, Accepted,
 | [0006](adr/0006-self-hosted-fonts.md)         | Self-hosted fonts                                            | Accepted |
 | [0007](adr/0007-case-study-content-model.md)  | MDX case studies with schema-validated metadata              | Accepted |
 | [0008](adr/0008-security-headers.md)          | Security headers; static-compatible CSP                      | Accepted |
+| [0009](adr/0009-topology-3d-approach.md)      | CSS 3D for the hero topology, not React Three Fiber          | Proposed |
