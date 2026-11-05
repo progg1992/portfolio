@@ -10,7 +10,7 @@ export const routes = [
   "/about",
   "/contact",
   "/privacy",
-  "/work/bdos-v3",
+  "/work/building-bluedevildev",
   "/work/incident-response",
   "/work/distributed-delivery",
 ] as const;
